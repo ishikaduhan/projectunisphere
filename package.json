@@ -11,5 +11,11 @@
     "server:start": "npm start --prefix server",
     "client:dev": "npm run dev --prefix client",
     "client:build": "npm run build --prefix client"
+  },
+  "dependencies": {
+    "node-cron": "^4.6.0"
+  },
+  "devDependencies": {
+    "@types/node-cron": "^3.0.11"
   }
 }

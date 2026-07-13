@@ -33,10 +33,15 @@ export const queueNotification = async (input: QueueNotificationInput): Promise<
 export const getUserNotifications = async (
   userId: string,
   page = 1,
-  limit = 20
+  limit = 20,
+  status?: INotification['status'] | 'all' | 'unread'
 ): Promise<{ items: INotification[]; total: number }> => {
   const skip = (page - 1) * limit;
-  const query = { userId: new Types.ObjectId(userId) };
+  const query: any = { userId: new Types.ObjectId(userId) };
+
+  if (status && status !== 'all') {
+    query.status = status === 'unread' ? 'sent' : status;
+  }
 
   const [items, total] = await Promise.all([
     Notification.find(query)
@@ -56,6 +61,18 @@ export const markNotificationRead = async (notificationId: string, userId: strin
     { status: 'read' },
     { new: true }
   ).exec();
+};
+
+export const markNotificationUnread = async (notificationId: string, userId: string): Promise<INotification | null> => {
+  return Notification.findOneAndUpdate(
+    { _id: new Types.ObjectId(notificationId), userId: new Types.ObjectId(userId), status: 'read' },
+    { status: 'sent' },
+    { new: true }
+  ).exec();
+};
+
+export const deleteNotification = async (notificationId: string, userId: string): Promise<INotification | null> => {
+  return Notification.findOneAndDelete({ _id: new Types.ObjectId(notificationId), userId: new Types.ObjectId(userId) }).exec();
 };
 
 export const processQueuedNotifications = async (): Promise<{ processed: number; failed: number }> => {

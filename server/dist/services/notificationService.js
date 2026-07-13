@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.queueEventApprovalNotification = exports.queueRegistrationConfirmation = exports.processQueuedNotifications = exports.markNotificationRead = exports.getUserNotifications = exports.queueNotification = void 0;
+exports.queueEventApprovalNotification = exports.queueRegistrationConfirmation = exports.processQueuedNotifications = exports.deleteNotification = exports.markNotificationUnread = exports.markNotificationRead = exports.getUserNotifications = exports.queueNotification = void 0;
 const mongoose_1 = require("mongoose");
 const Notification_1 = require("../models/Notification");
 const User_1 = require("../models/User");
@@ -18,9 +18,12 @@ const queueNotification = async (input) => {
     return notification.save();
 };
 exports.queueNotification = queueNotification;
-const getUserNotifications = async (userId, page = 1, limit = 20) => {
+const getUserNotifications = async (userId, page = 1, limit = 20, status) => {
     const skip = (page - 1) * limit;
     const query = { userId: new mongoose_1.Types.ObjectId(userId) };
+    if (status && status !== 'all') {
+        query.status = status === 'unread' ? 'sent' : status;
+    }
     const [items, total] = await Promise.all([
         Notification_1.Notification.find(query)
             .sort({ scheduledFor: -1 })
@@ -36,6 +39,14 @@ const markNotificationRead = async (notificationId, userId) => {
     return Notification_1.Notification.findOneAndUpdate({ _id: new mongoose_1.Types.ObjectId(notificationId), userId: new mongoose_1.Types.ObjectId(userId) }, { status: 'read' }, { new: true }).exec();
 };
 exports.markNotificationRead = markNotificationRead;
+const markNotificationUnread = async (notificationId, userId) => {
+    return Notification_1.Notification.findOneAndUpdate({ _id: new mongoose_1.Types.ObjectId(notificationId), userId: new mongoose_1.Types.ObjectId(userId), status: 'read' }, { status: 'sent' }, { new: true }).exec();
+};
+exports.markNotificationUnread = markNotificationUnread;
+const deleteNotification = async (notificationId, userId) => {
+    return Notification_1.Notification.findOneAndDelete({ _id: new mongoose_1.Types.ObjectId(notificationId), userId: new mongoose_1.Types.ObjectId(userId) }).exec();
+};
+exports.deleteNotification = deleteNotification;
 const processQueuedNotifications = async () => {
     const now = new Date();
     const notifications = await Notification_1.Notification.find({ status: 'queued', scheduledFor: { $lte: now } })

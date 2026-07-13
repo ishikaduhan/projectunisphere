@@ -20,7 +20,7 @@ export const setAccessTokenInMemory = (token: string | null) => {
 apiClient.interceptors.request.use(
   (config) => {
     if (accessTokenInMemory && config.headers) {
-      config.headers.Authorization = `Bearer ${accessTokenInMemory}`;
+      config.headers.Authorization = 'Bearer ' + accessTokenInMemory;
     }
     return config;
   },
@@ -32,11 +32,11 @@ apiClient.interceptors.response.use(
   (response) => response,
   async (error) => {
     const originalRequest = error.config;
-    
+
     // If response is 401 Unauthorized and we haven't retried yet
     if (error.response?.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
-      
+
       try {
         // Attempt to call the refresh token endpoint
         const response = await axios.post(
@@ -44,13 +44,13 @@ apiClient.interceptors.response.use(
           {},
           { withCredentials: true }
         );
-        
+
         const { accessToken } = response.data;
         setAccessTokenInMemory(accessToken);
-        
+
         // Update authorization header on the original request
-        originalRequest.headers.Authorization = `Bearer ${accessToken}`;
-        
+        originalRequest.headers.Authorization = 'Bearer ' + accessToken;
+
         // Re-execute original request
         return apiClient(originalRequest);
       } catch (refreshError) {
@@ -59,7 +59,7 @@ apiClient.interceptors.response.use(
         return Promise.reject(refreshError);
       }
     }
-    
+
     return Promise.reject(error);
   }
 );

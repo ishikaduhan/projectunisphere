@@ -9,6 +9,7 @@ import clubRoutes from './routes/clubs';
 import eventRoutes from './routes/events';
 import registrationRoutes from './routes/registrations';
 import attendanceRoutes from './routes/attendance';
+import notificationRoutes from './routes/notificationRoutes';
 import { errorHandler, AppError } from './middlewares/errorHandler';
 
 const app = express();
@@ -39,6 +40,7 @@ app.use('/api/v1/clubs', clubRoutes);
 app.use('/api/v1/events', eventRoutes);
 app.use('/api/v1/registrations', registrationRoutes);
 app.use('/api/v1/attendance', attendanceRoutes);
+app.use('/api/v1/notifications', notificationRoutes);
 
 // Health Check
 app.get('/health', (req: Request, res: Response) => {
