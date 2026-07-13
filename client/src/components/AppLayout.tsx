@@ -1,5 +1,7 @@
-import { NavLink, Outlet, useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
+import Navbar from './Navbar';
+import Sidebar from './Sidebar';
 
 const AppLayout = () => {
   const { user, logout } = useAuth();
@@ -10,36 +12,45 @@ const AppLayout = () => {
     navigate('/login');
   };
 
+  const navLinks = [
+    { to: '/', label: 'Dashboard' },
+    { to: '/events', label: 'Events' },
+    { to: '/clubs', label: 'Clubs' },
+    { to: '/my-events', label: 'My Events' },
+    { to: '/notifications', label: 'Notifications' },
+    { to: '/profile', label: 'Profile' },
+    {
+      to: '/organizer',
+      label: 'Organizer',
+      visible: user?.roles?.some((role) => role === 'organizer' || role === 'admin'),
+    },
+    {
+      to: '/organizer/events',
+      label: 'Manage events',
+      visible: user?.roles?.some((role) => role === 'organizer' || role === 'admin'),
+    },
+    {
+      to: '/admin',
+      label: 'Admin',
+      visible: user?.roles?.includes('admin'),
+    },
+    {
+      to: '/admin/events',
+      label: 'Admin events',
+      visible: user?.roles?.includes('admin'),
+    },
+    {
+      to: '/admin/clubs',
+      label: 'Club management',
+      visible: user?.roles?.includes('admin'),
+    },
+  ];
+
   return (
     <div className="app-shell">
-      <header className="app-header">
-        <div>
-          <h1>UniSphere</h1>
-          <p>Welcome back{user?.roles ? ` (${user.roles.join(', ')})` : ''}</p>
-        </div>
-        <button type="button" className="button button-secondary" onClick={handleLogout}>
-          Logout
-        </button>
-      </header>
-
+      <Navbar user={user} onLogout={handleLogout} />
       <div className="app-body">
-        <nav className="app-nav" aria-label="Primary navigation">
-          <NavLink to="/" end>
-            Dashboard
-          </NavLink>
-          <NavLink to="/events">Events</NavLink>
-          <NavLink to="/clubs">Clubs</NavLink>
-          <NavLink to="/my-events">My Events</NavLink>
-          {(user?.roles?.includes('organizer') || user?.roles?.includes('admin')) && (
-            <>
-              <NavLink to="/organizer">Organizer</NavLink>
-              <NavLink to="/organizer/events">Manage events</NavLink>
-            </>
-          )}
-          <NavLink to="/notifications">Notifications</NavLink>
-          <NavLink to="/profile">Profile</NavLink>
-        </nav>
-
+        <Sidebar links={navLinks} />
         <main className="app-content">
           <Outlet />
         </main>

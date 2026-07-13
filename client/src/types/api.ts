@@ -131,3 +131,12 @@ export interface NotificationItem {
   scheduledFor: string;
   createdAt: string;
 }
+
+export interface AnalyticsSummary {
+  totalEvents: number;
+  upcomingEvents: number;
+  approvedEvents: number;
+  averageRegistrations: number;
+  averageAttendance: number;
+  topTags: Array<{ tag: string; count: number }>;
+}

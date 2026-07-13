@@ -14,6 +14,9 @@ import ClubListingPage from './pages/ClubListingPage';
 import ClubDetailsPage from './pages/ClubDetailsPage';
 import OrganizerDashboardPage from './pages/OrganizerDashboardPage';
 import MyEventsPage from './pages/MyEventsPage';
+import AdminDashboardPage from './pages/AdminDashboardPage';
+import AdminEventsPage from './pages/AdminEventsPage';
+import AdminClubsPage from './pages/AdminClubsPage';
 import NotFoundPage from './pages/NotFoundPage';
 import './App.css';
 
@@ -37,6 +40,12 @@ function App() {
               <Route path="/profile" element={<ProfilePage />} />
               <Route path="/clubs" element={<ClubListingPage />} />
               <Route path="/clubs/:id" element={<ClubDetailsPage />} />
+
+              <Route element={<ProtectedRoute roles={['admin']} />}>
+                <Route path="/admin" element={<AdminDashboardPage />} />
+                <Route path="/admin/events" element={<AdminEventsPage />} />
+                <Route path="/admin/clubs" element={<AdminClubsPage />} />
+              </Route>
             </Route>
           </Route>
 

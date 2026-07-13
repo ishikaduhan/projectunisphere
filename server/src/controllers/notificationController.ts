@@ -5,15 +5,11 @@ import {
   getUserNotifications,
   markNotificationRead,
   markNotificationUnread,
-  processQueuedNotifications // <-- 1. Import it from the service here
 } from '../services/notificationService';
 
-// <-- 2. Export it directly so server.ts can use it cleanly
-export { processQueuedNotifications };
-
 /**
-List notifications for the authenticated user.
-*/
+ * List notifications for the authenticated user.
+ */
 export const listNotificationsHandler = async (
   req: Request,
   res: Response,
@@ -21,7 +17,6 @@ export const listNotificationsHandler = async (
 ): Promise<void> => {
   try {
     const userId = req.user?.id;
-
     if (!userId) {
       const err: AppError = new Error('Authentication required');
       err.statusCode = 401;
@@ -41,8 +36,8 @@ export const listNotificationsHandler = async (
 };
 
 /**
-Mark a notification as read for the authenticated user.
-*/
+ * Mark a notification as read for the authenticated user.
+ */
 export const markNotificationReadHandler = async (
   req: Request,
   res: Response,
@@ -50,7 +45,6 @@ export const markNotificationReadHandler = async (
 ): Promise<void> => {
   try {
     const userId = req.user?.id;
-
     if (!userId) {
       const err: AppError = new Error('Authentication required');
       err.statusCode = 401;
@@ -75,8 +69,8 @@ export const markNotificationReadHandler = async (
 };
 
 /**
-Mark a notification as unread for the authenticated user.
-*/
+ * Mark a notification as unread for the authenticated user.
+ */
 export const markNotificationUnreadHandler = async (
   req: Request,
   res: Response,
@@ -84,7 +78,6 @@ export const markNotificationUnreadHandler = async (
 ): Promise<void> => {
   try {
     const userId = req.user?.id;
-
     if (!userId) {
       const err: AppError = new Error('Authentication required');
       err.statusCode = 401;
@@ -109,8 +102,8 @@ export const markNotificationUnreadHandler = async (
 };
 
 /**
-Delete a notification for the authenticated user.
-*/
+ * Delete a notification for the authenticated user.
+ */
 export const deleteNotificationHandler = async (
   req: Request,
   res: Response,
@@ -118,7 +111,6 @@ export const deleteNotificationHandler = async (
 ): Promise<void> => {
   try {
     const userId = req.user?.id;
-
     if (!userId) {
       const err: AppError = new Error('Authentication required');
       err.statusCode = 401;

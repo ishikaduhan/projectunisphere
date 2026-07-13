@@ -61,6 +61,24 @@ export const deleteEvent = async (eventId: string): Promise<void> => {
   await apiClient.delete(`/events/${eventId}`);
 };
 
+export const approveEvent = async (eventId: string, status: 'approved' | 'rejected', feedback?: string): Promise<EventItem> => {
+  const response = await apiClient.post(`/events/${eventId}/approval`, { status, feedback });
+  return response.data.event;
+};
+
+export const getEventAnalytics = async (filters?: {
+  status?: string;
+  clubId?: string;
+  startDate?: string;
+  endDate?: string;
+  locationMode?: string;
+}): Promise<any> => {
+  const response = await apiClient.get('/events/analytics', {
+    params: filters,
+  });
+  return response.data.analytics;
+};
+
 export const registerForEvent = async (eventId: string): Promise<{ registration: any; qrToken?: string }> => {
   const response = await apiClient.post('/registrations', { eventId });
   return response.data;

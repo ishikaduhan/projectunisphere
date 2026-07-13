@@ -1,12 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteNotificationHandler = exports.markNotificationUnreadHandler = exports.markNotificationReadHandler = exports.listNotificationsHandler = exports.processQueuedNotifications = void 0;
+exports.deleteNotificationHandler = exports.markNotificationUnreadHandler = exports.markNotificationReadHandler = exports.listNotificationsHandler = void 0;
 const notificationService_1 = require("../services/notificationService");
-Object.defineProperty(exports, "processQueuedNotifications", { enumerable: true, get: function () { return notificationService_1.processQueuedNotifications // <-- 1. Import it from the service here
-    ; } });
 /**
-List notifications for the authenticated user.
-*/
+ * List notifications for the authenticated user.
+ */
 const listNotificationsHandler = async (req, res, next) => {
     try {
         const userId = req.user?.id;
@@ -28,8 +26,8 @@ const listNotificationsHandler = async (req, res, next) => {
 };
 exports.listNotificationsHandler = listNotificationsHandler;
 /**
-Mark a notification as read for the authenticated user.
-*/
+ * Mark a notification as read for the authenticated user.
+ */
 const markNotificationReadHandler = async (req, res, next) => {
     try {
         const userId = req.user?.id;
@@ -55,8 +53,8 @@ const markNotificationReadHandler = async (req, res, next) => {
 };
 exports.markNotificationReadHandler = markNotificationReadHandler;
 /**
-Mark a notification as unread for the authenticated user.
-*/
+ * Mark a notification as unread for the authenticated user.
+ */
 const markNotificationUnreadHandler = async (req, res, next) => {
     try {
         const userId = req.user?.id;
@@ -82,8 +80,8 @@ const markNotificationUnreadHandler = async (req, res, next) => {
 };
 exports.markNotificationUnreadHandler = markNotificationUnreadHandler;
 /**
-Delete a notification for the authenticated user.
-*/
+ * Delete a notification for the authenticated user.
+ */
 const deleteNotificationHandler = async (req, res, next) => {
     try {
         const userId = req.user?.id;
