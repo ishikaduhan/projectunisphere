@@ -5,6 +5,7 @@ import AppLayout from './components/AppLayout';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import DashboardPage from './pages/DashboardPage';
+import DiscoverPage from './pages/DiscoverPage';
 import EventListingPage from './pages/EventListingPage';
 import EventDetailsPage from './pages/EventDetailsPage';
 import MyRegisteredEventsPage from './pages/MyRegisteredEventsPage';
@@ -31,6 +32,7 @@ function App() {
           <Route element={<ProtectedRoute />}>
             <Route element={<AppLayout />}>
               <Route path="/" element={<DashboardPage />} />
+              <Route path="/discover" element={<DiscoverPage />} />
               <Route path="/events" element={<EventListingPage />} />
               <Route path="/events/:id" element={<EventDetailsPage />} />
               <Route path="/my-events" element={<MyRegisteredEventsPage />} />

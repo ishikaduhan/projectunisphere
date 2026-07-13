@@ -14,6 +14,7 @@ const AppLayout = () => {
 
   const navLinks = [
     { to: '/', label: 'Dashboard' },
+    { to: '/discover', label: 'Discover' },
     { to: '/events', label: 'Events' },
     { to: '/clubs', label: 'Clubs' },
     { to: '/my-events', label: 'My Events' },
