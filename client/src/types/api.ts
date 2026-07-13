@@ -23,6 +23,12 @@ export interface EventItem {
   title: string;
   description: string;
   tags?: string[];
+  createdBy?: string;
+  organizers?: string[];
+  approval?: {
+    status: 'draft' | 'pending' | 'approved' | 'rejected';
+    feedback?: string;
+  };
   schedule: {
     startAt: string;
     endAt: string;
@@ -51,6 +57,42 @@ export interface EventItem {
     registeredCount?: number;
     checkedInCount?: number;
   };
+  createdAt?: string;
+  updatedAt?: string;
+}
+
+export interface AttendanceRecord {
+  _id: string;
+  userId: {
+    _id: string;
+    name: {
+      first: string;
+      last: string;
+    };
+    email: string;
+    profile: {
+      department: string;
+    };
+  };
+  checkIn: {
+    status: string;
+    checkedInAt?: string;
+    method: string;
+    scannedBy: string;
+  };
+  registrationId: string;
+}
+
+export interface AttendanceReport {
+  event: EventItem;
+  statistics: {
+    totalRegistered: number;
+    totalCheckedIn: number;
+    totalExcused: number;
+    totalAbsent: number;
+    attendanceRate: number;
+  };
+  attendance: AttendanceRecord[];
 }
 
 export interface ClubItem {

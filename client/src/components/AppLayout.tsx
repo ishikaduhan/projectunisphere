@@ -30,6 +30,12 @@ const AppLayout = () => {
           <NavLink to="/events">Events</NavLink>
           <NavLink to="/clubs">Clubs</NavLink>
           <NavLink to="/my-events">My Events</NavLink>
+          {(user?.roles?.includes('organizer') || user?.roles?.includes('admin')) && (
+            <>
+              <NavLink to="/organizer">Organizer</NavLink>
+              <NavLink to="/organizer/events">Manage events</NavLink>
+            </>
+          )}
           <NavLink to="/notifications">Notifications</NavLink>
           <NavLink to="/profile">Profile</NavLink>
         </nav>

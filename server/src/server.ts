@@ -4,6 +4,8 @@ dotenv.config();
 
 import app from './app';
 import { connectDB } from './config/db';
+import cron from 'node-cron';
+import { processQueuedNotifications } from './controllers/notificationController';
 
 const PORT = process.env.PORT || 5000;
 
@@ -16,6 +18,17 @@ const startServer = async () => {
     app.listen(PORT, () => {
       console.log(`[Server] UniSphere API Server listening on port ${PORT} in ${process.env.NODE_ENV} mode.`);
     });
+
+    // Schedule background notification processing to run every minute
+    cron.schedule('* * * * *', async () => {
+      try {
+        console.log('[Cron] Running background task: Processing queued notifications...');
+        await processQueuedNotifications();
+      } catch (error) {
+        console.error('[Cron] Error processing queued notifications:', error);
+      }
+    });
+
   } catch (error) {
     console.error('Failed to start UniSphere API Server:', error);
     process.exit(1);

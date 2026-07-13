@@ -12,6 +12,8 @@ import NotificationsPage from './pages/NotificationsPage';
 import ProfilePage from './pages/ProfilePage';
 import ClubListingPage from './pages/ClubListingPage';
 import ClubDetailsPage from './pages/ClubDetailsPage';
+import OrganizerDashboardPage from './pages/OrganizerDashboardPage';
+import MyEventsPage from './pages/MyEventsPage';
 import NotFoundPage from './pages/NotFoundPage';
 import './App.css';
 
@@ -29,6 +31,8 @@ function App() {
               <Route path="/events" element={<EventListingPage />} />
               <Route path="/events/:id" element={<EventDetailsPage />} />
               <Route path="/my-events" element={<MyRegisteredEventsPage />} />
+              <Route path="/organizer" element={<OrganizerDashboardPage />} />
+              <Route path="/organizer/events" element={<MyEventsPage />} />
               <Route path="/notifications" element={<NotificationsPage />} />
               <Route path="/profile" element={<ProfilePage />} />
               <Route path="/clubs" element={<ClubListingPage />} />
