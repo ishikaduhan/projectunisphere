@@ -7,6 +7,7 @@ import authRoutes from './routes/auth';
 import userRoutes from './routes/users';
 import clubRoutes from './routes/clubs';
 import eventRoutes from './routes/events';
+import registrationRoutes from './routes/registrations';
 import { errorHandler, AppError } from './middlewares/errorHandler';
 
 const app = express();
@@ -35,6 +36,7 @@ app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/users', userRoutes);
 app.use('/api/v1/clubs', clubRoutes);
 app.use('/api/v1/events', eventRoutes);
+app.use('/api/v1/registrations', registrationRoutes);
 
 // Health Check
 app.get('/health', (req: Request, res: Response) => {
