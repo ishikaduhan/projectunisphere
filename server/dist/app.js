@@ -10,6 +10,8 @@ const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const morgan_1 = __importDefault(require("morgan"));
 const auth_1 = __importDefault(require("./routes/auth"));
 const users_1 = __importDefault(require("./routes/users"));
+const clubs_1 = __importDefault(require("./routes/clubs"));
+const events_1 = __importDefault(require("./routes/events"));
 const errorHandler_1 = require("./middlewares/errorHandler");
 const app = (0, express_1.default)();
 // Security Middlewares
@@ -29,6 +31,8 @@ if (process.env.NODE_ENV !== 'test') {
 // Routes
 app.use('/api/v1/auth', auth_1.default);
 app.use('/api/v1/users', users_1.default);
+app.use('/api/v1/clubs', clubs_1.default);
+app.use('/api/v1/events', events_1.default);
 // Health Check
 app.get('/health', (req, res) => {
     res.status(200).json({ status: 'OK', env: process.env.NODE_ENV });

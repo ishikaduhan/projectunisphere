@@ -5,6 +5,8 @@ import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
 import authRoutes from './routes/auth';
 import userRoutes from './routes/users';
+import clubRoutes from './routes/clubs';
+import eventRoutes from './routes/events';
 import { errorHandler, AppError } from './middlewares/errorHandler';
 
 const app = express();
@@ -31,6 +33,8 @@ if (process.env.NODE_ENV !== 'test') {
 // Routes
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/users', userRoutes);
+app.use('/api/v1/clubs', clubRoutes);
+app.use('/api/v1/events', eventRoutes);
 
 // Health Check
 app.get('/health', (req: Request, res: Response) => {
