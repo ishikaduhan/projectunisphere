@@ -4,6 +4,7 @@ import { Event, IEvent } from '../models/Event';
 import { User, IUser } from '../models/User';
 import { AppError } from '../middlewares/errorHandler';
 import { queueRegistrationConfirmation } from './notificationService';
+import { generateQrToken, hashQrToken } from '../utils/qr';
 
 export const isValidObjectId = (id: string): boolean => Types.ObjectId.isValid(id);
 
@@ -30,7 +31,7 @@ export const getUserRegistrations = async (
   return { items, total };
 };
 
-export const registerForEvent = async (userId: string, eventId: string): Promise<IRegistration> => {
+export const registerForEvent = async (userId: string, eventId: string): Promise<{ registration: IRegistration; qrToken?: string }> => {
   if (!isValidObjectId(userId) || !isValidObjectId(eventId)) {
     const err: AppError = new Error('Invalid user or event identifier');
     err.statusCode = 400;
@@ -85,12 +86,15 @@ export const registerForEvent = async (userId: string, eventId: string): Promise
     status = 'waitlisted';
   }
 
-  const registration = new Registration({
+  const registrationData: Partial<IRegistration> = {
     eventId: event._id,
     userId: new Types.ObjectId(userId),
     status,
     registeredAt: new Date(),
-  });
+  };
+
+  let qrToken: string | undefined;
+  const registration = new Registration(registrationData);
 
   try {
     await registration.save();
@@ -105,17 +109,24 @@ export const registerForEvent = async (userId: string, eventId: string): Promise
   }
 
   if (status === 'registered') {
+    qrToken = generateQrToken(registration._id.toString(), event._id.toString(), userId, event.qr?.secretVersion || 1);
+    registration.ticket = {
+      qrTokenHash: hashQrToken(qrToken),
+      issuedAt: new Date(),
+    };
+    await registration.save();
+
     event.analytics.registeredCount = currentCount + 1;
     await event.save();
   }
 
   try {
-    await queueRegistrationConfirmation(registration._id.toString(), event, user);
+    await queueRegistrationConfirmation(registration._id.toString(), event, user, qrToken);
   } catch (notificationError) {
     console.warn('[Registration] Failed to queue confirmation notification', notificationError);
   }
 
-  return registration;
+  return { registration, qrToken };
 };
 
 export const cancelRegistration = async (userId: string, registrationId: string): Promise<IRegistration> => {

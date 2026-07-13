@@ -15,8 +15,8 @@ const createRegistrationHandler = async (req, res, next) => {
             return next(err);
         }
         const { eventId } = req.body;
-        const registration = await (0, registrationService_1.registerForEvent)(userId, eventId);
-        res.status(201).json({ registration });
+        const { registration, qrToken } = await (0, registrationService_1.registerForEvent)(userId, eventId);
+        res.status(201).json({ registration, qrToken });
     }
     catch (error) {
         next(error);

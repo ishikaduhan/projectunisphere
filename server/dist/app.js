@@ -13,6 +13,7 @@ const users_1 = __importDefault(require("./routes/users"));
 const clubs_1 = __importDefault(require("./routes/clubs"));
 const events_1 = __importDefault(require("./routes/events"));
 const registrations_1 = __importDefault(require("./routes/registrations"));
+const attendance_1 = __importDefault(require("./routes/attendance"));
 const errorHandler_1 = require("./middlewares/errorHandler");
 const app = (0, express_1.default)();
 // Security Middlewares
@@ -35,6 +36,7 @@ app.use('/api/v1/users', users_1.default);
 app.use('/api/v1/clubs', clubs_1.default);
 app.use('/api/v1/events', events_1.default);
 app.use('/api/v1/registrations', registrations_1.default);
+app.use('/api/v1/attendance', attendance_1.default);
 // Health Check
 app.get('/health', (req, res) => {
     res.status(200).json({ status: 'OK', env: process.env.NODE_ENV });

@@ -6,6 +6,7 @@ const Registration_1 = require("../models/Registration");
 const Event_1 = require("../models/Event");
 const User_1 = require("../models/User");
 const notificationService_1 = require("./notificationService");
+const qr_1 = require("../utils/qr");
 const isValidObjectId = (id) => mongoose_1.Types.ObjectId.isValid(id);
 exports.isValidObjectId = isValidObjectId;
 const getUserRegistrations = async (userId, page = 1, limit = 20) => {
@@ -71,12 +72,14 @@ const registerForEvent = async (userId, eventId) => {
         }
         status = 'waitlisted';
     }
-    const registration = new Registration_1.Registration({
+    const registrationData = {
         eventId: event._id,
         userId: new mongoose_1.Types.ObjectId(userId),
         status,
         registeredAt: new Date(),
-    });
+    };
+    let qrToken;
+    const registration = new Registration_1.Registration(registrationData);
     try {
         await registration.save();
     }
@@ -90,16 +93,22 @@ const registerForEvent = async (userId, eventId) => {
         throw error;
     }
     if (status === 'registered') {
+        qrToken = (0, qr_1.generateQrToken)(registration._id.toString(), event._id.toString(), userId, event.qr?.secretVersion || 1);
+        registration.ticket = {
+            qrTokenHash: (0, qr_1.hashQrToken)(qrToken),
+            issuedAt: new Date(),
+        };
+        await registration.save();
         event.analytics.registeredCount = currentCount + 1;
         await event.save();
     }
     try {
-        await (0, notificationService_1.queueRegistrationConfirmation)(registration._id.toString(), event, user);
+        await (0, notificationService_1.queueRegistrationConfirmation)(registration._id.toString(), event, user, qrToken);
     }
     catch (notificationError) {
         console.warn('[Registration] Failed to queue confirmation notification', notificationError);
     }
-    return registration;
+    return { registration, qrToken };
 };
 exports.registerForEvent = registerForEvent;
 const cancelRegistration = async (userId, registrationId) => {
