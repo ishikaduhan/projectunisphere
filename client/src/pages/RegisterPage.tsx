@@ -109,7 +109,7 @@ const RegisterPage = () => {
               </div>
 
               <div>
-                <label className="block font-label-md text-on-surface-variant mb-2 uppercase text-[10px]">Academic Email</label>
+                <label className="block font-label-md text-on-surface-variant mb-2 uppercase text-[10px]">Email Address</label>
                 <input
                   className="w-full px-4 py-3 bg-white border border-outline/20 rounded focus:ring-1 focus:ring-tertiary/20 focus:border-tertiary outline-none font-body-md"
                   placeholder="example@gmail.com"
