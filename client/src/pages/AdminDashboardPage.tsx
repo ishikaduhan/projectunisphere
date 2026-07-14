@@ -58,25 +58,18 @@ const AdminDashboardPage = () => {
   }
 
   return (
-    <section className="page-section">
-      <div className="page-header">
-        <div>
-          <h2>Admin Dashboard</h2>
-          <p>Monitor approvals, club activity, and campus-wide event performance.</p>
-        </div>
-      </div>
-
+    <main className="px-margin-desktop py-10 max-w-container-max mx-auto w-full">
       {error && <div className="message error">{error}</div>}
       {message && <div className="message success">{message}</div>}
 
-      <div className="summary-grid">
+      <section className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
         <SummaryCard title="Total clubs" value={clubCount} subtitle="Active campus clubs" />
         <SummaryCard title="Pending approvals" value={pendingEvents.length} subtitle="Events waiting for review" />
         <SummaryCard title="Approved events" value={analytics?.approvedEvents ?? 0} subtitle="Events accepted by the admin team" />
         <SummaryCard title="Upcoming events" value={analytics?.upcomingEvents ?? 0} subtitle="Events scheduled in the future" />
-      </div>
+      </section>
 
-      <div className="card">
+      <div className="card p-6 rounded-xl border border-outline-variant mb-6">
         <div className="panel-header">
           <div>
             <h3>Campus event analytics</h3>
@@ -85,7 +78,7 @@ const AdminDashboardPage = () => {
         </div>
 
         {analytics ? (
-          <div className="report-grid">
+          <div className="report-grid mt-4 grid grid-cols-1 md:grid-cols-4 gap-4">
             <SummaryCard title="Average registrations" value={analytics.averageRegistrations.toFixed(1)} subtitle="Registrations per event" />
             <SummaryCard title="Avg. attendance" value={analytics.averageAttendance.toFixed(1)} subtitle="Checked-in attendees per event" />
             <SummaryCard title="Top tags" value={topTags.map((tag) => tag.tag).slice(0, 3).join(', ') || 'None'} subtitle="Trending event topics" />
@@ -96,7 +89,7 @@ const AdminDashboardPage = () => {
         )}
       </div>
 
-      <div className="card">
+      <div className="card p-6 rounded-xl border border-outline-variant">
         <div className="panel-header">
           <div>
             <h3>Pending event approvals</h3>
@@ -134,7 +127,7 @@ const AdminDashboardPage = () => {
           </DataTable>
         )}
       </div>
-    </section>
+    </main>
   );
 };
 

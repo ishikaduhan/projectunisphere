@@ -76,59 +76,64 @@ const ProfilePage = () => {
   }
 
   return (
-    <section className="page-section">
-      <div className="page-header">
-        <div>
-          <h2>Profile</h2>
-          <p>Manage your student profile, notification settings, and university details.</p>
-        </div>
-      </div>
-
+    <main className="max-w-container-max mx-auto px-6 lg:px-margin-desktop py-8">
       {error && <div className="message error">{error}</div>}
       {message && <div className="message success">{message}</div>}
 
-      <div className="card">
-        <h3>Account</h3>
-        <p>
-          {profile.name.first} {profile.name.last}
-        </p>
-        <p>{profile.email}</p>
+      <div className="bg-surface p-6 rounded-xl border border-outline-variant mb-6 flex items-center gap-6">
+        <div className="w-24 h-24 rounded-full bg-surface-dim flex items-center justify-center text-headline-md">{profile.name.first?.charAt(0)}</div>
+        <div>
+          <h2 className="text-headline-md mb-1">{profile.name.first} {profile.name.last}</h2>
+          <p className="text-on-surface-variant">{profile.email}</p>
+          <p className="text-on-surface-variant">{profile.profile.department} • Year {profile.profile.year ?? '—'}</p>
+        </div>
       </div>
 
-      <form className="card form-card" onSubmit={handleSave}>
-        <label>
-          Department
-          <input value={department} onChange={(e) => setDepartment(e.target.value)} required />
-        </label>
-        <label>
-          Year
-          <input type="number" min={1} value={year} onChange={(e) => setYear(e.target.value)} />
-        </label>
-        <label>
-          Interests
-          <input value={interests} onChange={(e) => setInterests(e.target.value)} placeholder="e.g. music, design" />
-        </label>
-        <label>
-          Timezone
-          <input value={timezone} onChange={(e) => setTimezone(e.target.value)} required />
-        </label>
+      <form className="grid grid-cols-1 lg:grid-cols-3 gap-6" onSubmit={handleSave}>
+        <div className="lg:col-span-2 bg-surface p-6 rounded-xl border border-outline-variant">
+          <h3 className="mb-4">University details</h3>
+          <div className="space-y-4">
+            <label className="block">
+              <div className="text-label-md text-on-surface-variant mb-2">Department</div>
+              <input className="w-full px-4 py-3 border rounded" value={department} onChange={(e) => setDepartment(e.target.value)} required />
+            </label>
 
-        <div className="checkbox-row">
-          <label>
-            <input type="checkbox" checked={notifyEmail} onChange={(e) => setNotifyEmail(e.target.checked)} />
-            Email notifications
-          </label>
-          <label>
-            <input type="checkbox" checked={notifyPush} onChange={(e) => setNotifyPush(e.target.checked)} />
-            Push notifications
-          </label>
+            <label className="block">
+              <div className="text-label-md text-on-surface-variant mb-2">Year</div>
+              <input className="w-full px-4 py-3 border rounded" type="number" min={1} value={year} onChange={(e) => setYear(e.target.value)} />
+            </label>
+
+            <label className="block">
+              <div className="text-label-md text-on-surface-variant mb-2">Interests</div>
+              <input className="w-full px-4 py-3 border rounded" value={interests} onChange={(e) => setInterests(e.target.value)} placeholder="e.g. music, design" />
+            </label>
+
+            <label className="block">
+              <div className="text-label-md text-on-surface-variant mb-2">Timezone</div>
+              <input className="w-full px-4 py-3 border rounded" value={timezone} onChange={(e) => setTimezone(e.target.value)} required />
+            </label>
+          </div>
+
+          <div className="mt-6">
+            <button type="submit" className="px-6 py-3 bg-tertiary text-on-tertiary rounded font-semibold" disabled={saving}>{saving ? 'Saving…' : 'Save profile'}</button>
+          </div>
         </div>
 
-        <button type="submit" className="button" disabled={saving}>
-          {saving ? 'Saving…' : 'Save profile'}
-        </button>
+        <aside className="bg-surface p-6 rounded-xl border border-outline-variant">
+          <h3 className="mb-4">Notifications</h3>
+          <div className="space-y-3">
+            <label className="flex items-center justify-between">
+              <span>Email notifications</span>
+              <input type="checkbox" checked={notifyEmail} onChange={(e) => setNotifyEmail(e.target.checked)} />
+            </label>
+            <label className="flex items-center justify-between">
+              <span>Push notifications</span>
+              <input type="checkbox" checked={notifyPush} onChange={(e) => setNotifyPush(e.target.checked)} />
+            </label>
+          </div>
+        </aside>
       </form>
-    </section>
+    </main>
   );
 };
 
