@@ -88,7 +88,9 @@ const LoginPage = () => {
               <span className="font-headline-sm text-primary">UniSphere</span>
             </div>
             <h2 className="font-headline-md text-on-surface mb-2">Welcome back</h2>
-            <p className="text-on-surface-variant font-body-md">Sign in to your institutional portal.</p>
+            <p className="text-on-surface-variant font-body-md">
+  Sign in to your UniSphere account.
+</p>
           </div>
 
           {/* Role Selection Toggle */}
@@ -120,12 +122,14 @@ const LoginPage = () => {
           <div className="glass-panel p-8 rounded-lg shadow-sm border border-outline/10" id="authContainer">
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
-                <label className="block font-label-md text-on-surface-variant mb-2 uppercase text-[10px]">Institutional Email</label>
+                <label className="block font-label-md text-on-surface-variant mb-2 uppercase text-[10px]">
+  Email Address
+</label>
                 <div className="relative group">
                   <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-tertiary transition-colors">alternate_email</span>
                   <input
                     className="w-full pl-12 pr-4 py-3.5 bg-white border border-outline/20 rounded focus:ring-1 focus:ring-tertiary/20 focus:border-tertiary outline-none transition-all font-body-md"
-                    placeholder="jane.doe@university.edu"
+                    placeholder="example@gmail.com"
                     required
                     type="email"
                     value={email}

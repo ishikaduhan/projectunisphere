@@ -63,14 +63,18 @@ const RegisterPage = () => {
               <span className="font-headline-sm text-primary">UniSphere</span>
             </div>
             <h2 className="font-headline-md text-on-surface mb-2">Request Access</h2>
-            <p className="text-on-surface-variant font-body-md">Request an institutional account to join UniSphere.</p>
+            <p className="text-on-surface-variant font-body-md">
+  Create your UniSphere account to get started.
+</p>
           </div>
 
           <div className="glass-panel p-8 rounded-lg shadow-sm border border-outline/10">
             <form className="space-y-4" onSubmit={handleSubmit}>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block font-label-md text-on-surface-variant mb-2 uppercase text-[10px]">First Name</label>
+                  <label className="block font-label-md text-on-surface-variant mb-2 uppercase text-[10px]">
+  Email Address
+</label>
                   <input
                     className="w-full px-4 py-3 bg-white border border-outline/20 rounded focus:ring-1 focus:ring-tertiary/20 focus:border-tertiary outline-none font-body-md"
                     placeholder="Jane"
@@ -108,7 +112,7 @@ const RegisterPage = () => {
                 <label className="block font-label-md text-on-surface-variant mb-2 uppercase text-[10px]">Academic Email</label>
                 <input
                   className="w-full px-4 py-3 bg-white border border-outline/20 rounded focus:ring-1 focus:ring-tertiary/20 focus:border-tertiary outline-none font-body-md"
-                  placeholder="jane.doe@university.edu"
+                  placeholder="example@gmail.com"
                   type="email"
                   required
                   value={email}
