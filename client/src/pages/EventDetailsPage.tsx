@@ -72,8 +72,9 @@ const EventDetailsPage = () => {
     );
   }
 
-  const banner = (event as any).bannerUrl || 'https://via.placeholder.com/1600x500';
+  const banner = (event as any).bannerUrl || 'https://lh3.googleusercontent.com/aida-public/AB6AXuBw7pw7KJyidvMYY40iJsT3iNlWXB-BTOgIrVepRR0wCRiJa7Rr9Ew-mWs9yeihqGZKVP_H_FVEDtD92i5MaxBe-3OMvstKCsukP_Ll_tWlpwzh7abmiYzFAXynuA95wjTAyP765XChiuDPu8s9lns0qSO2UmhgngvCN-HQEgkt6g4GQHWRD_7Lh0eQdAQ_-O9PG12LuiHtDH-o2g3xhnjovcdLicGIueZA6S12Y5TSmfaxamKh01f2cxlCzjAN9UDd7e-Mx0g375k';
   const speakers = (event as any).speakers || [];
+    const avatarFallback = 'https://lh3.googleusercontent.com/aida-public/AB6AXuBBPGvK5j30M7jYUevT6AatfG-2KW17mzg-T9J9CvEnahbjIff1jMGn_H--vL1zI5gN21HMa781nxOBz0Ca9Zf1QqIqd8sL-cTsvCbhymP63Imi6zstIEP5MdXt2wN71LwmeGNiuy83TYh4Cul8nWEqGr1aNBvoYxP4RPPMql06mqJW2CVSNmqg2hJfAEWGjf8RspF2kB12dJ-NqFQwD7s4ea0CeqMgj-0qDvTRF3wcGG00J0GGQkRsQiivccULHOH5gVUpERNL53g';
 
   return (
     <main className="max-w-container-max mx-auto px-6 lg:px-margin-desktop py-8">
@@ -148,7 +149,7 @@ const EventDetailsPage = () => {
               {/* Speakers would be derived from event data if available */}
               <div className="group">
                 <div className="relative aspect-[3/4] rounded-lg overflow-hidden mb-4 grayscale hover:grayscale-0 transition-all duration-500 border border-outline-variant">
-                  <img className="w-full h-full object-cover" src={speakers?.[0]?.photo || 'https://via.placeholder.com/300x400'} alt={speakers?.[0]?.name || 'Speaker'} />
+                  <img className="w-full h-full object-cover" src={speakers?.[0]?.photo || avatarFallback} alt={speakers?.[0]?.name || 'Speaker'} />
                 </div>
                 <h4 className="font-headline-sm text-[18px] text-on-surface">{speakers?.[0]?.name || 'TBA'}</h4>
                 <p className="font-label-md text-caption text-on-surface-variant uppercase tracking-tighter">{speakers?.[0]?.title || ''}</p>
@@ -211,9 +212,9 @@ const EventDetailsPage = () => {
             <h4 className="font-label-md text-caption text-on-surface-variant uppercase tracking-widest mb-4">Friends Attending</h4>
             <div className="flex items-center">
               <div className="flex -space-x-2">
-                <div className="w-10 h-10 rounded-full border-2 border-background overflow-hidden"><img className="w-full h-full object-cover" src="https://via.placeholder.com/40" alt="" /></div>
-                <div className="w-10 h-10 rounded-full border-2 border-background overflow-hidden"><img className="w-full h-full object-cover" src="https://via.placeholder.com/40" alt="" /></div>
-                <div className="w-10 h-10 rounded-full border-2 border-background overflow-hidden"><img className="w-full h-full object-cover" src="https://via.placeholder.com/40" alt="" /></div>
+                <div className="w-10 h-10 rounded-full border-2 border-background overflow-hidden"><img className="w-full h-full object-cover" src={avatarFallback} alt="" /></div>
+                                <div className="w-10 h-10 rounded-full border-2 border-background overflow-hidden"><img className="w-full h-full object-cover" src={avatarFallback} alt="" /></div>
+                                <div className="w-10 h-10 rounded-full border-2 border-background overflow-hidden"><img className="w-full h-full object-cover" src={avatarFallback} alt="" /></div>
                 <div className="w-10 h-10 rounded-full bg-secondary text-on-secondary flex items-center justify-center text-[10px] font-bold border-2 border-background uppercase">+244</div>
               </div>
             </div>

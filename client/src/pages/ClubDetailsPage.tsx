@@ -47,7 +47,7 @@ const ClubDetailsPage = () => {
       {error && <div className="message error">{error}</div>}
 
       <div className="relative w-full rounded-xl overflow-hidden shadow-md mb-8 border border-outline-variant">
-        <div className="w-full h-64 bg-cover bg-center" style={{ backgroundImage: `url('https://via.placeholder.com/1200x400')` }} />
+        <div className="w-full h-64 bg-cover bg-center" style={{ backgroundImage: `url('https://lh3.googleusercontent.com/aida-public/AB6AXuBO7fqaUYFSnmpSD_9zkg4hIcNX-z5Tw5fp0_3F5_Tvz0bJFMtvZ3nwKTDUv68FPaRgcxrSTP0Hn39WiqDr2ji5EE-A6CYIn1anUHKJDw5IgeMdSAIVxmb69_4hUeKcaRHLWa0xZ8wQump51xLcfw-kAo4Y5gbOAUZYynPPfyCcmtlTC153f_IUS_B-_4aB_YzNUOEEfWTNOvL_qcfsRdjpxwNjYZ_YWzitb5NlexuRPUqZcOlNiutWTEUcrDa4YOc0qGrI3oLRcH8')` }} />
         <div className="p-6 bg-surface-container-low">
           <div className="flex items-start gap-6">
             <div className="w-24 h-24 rounded-lg overflow-hidden bg-surface">
