@@ -1,0 +1,400 @@
+
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>UniSphere | Profile &amp; Notifications</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;500;600&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#28180e",
+                        "on-error-container": "#93000a",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "tertiary": "#1d1e1d",
+                        "on-tertiary-fixed": "#1a1c1a",
+                        "outline": "#7c757b",
+                        "inverse-surface": "#31302e",
+                        "on-surface-variant": "#4b454b",
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#e5e2de",
+                        "secondary-container": "#fddccc",
+                        "surface-tint": "#5f6229",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-container": "#333602",
+                        "on-primary-fixed": "#1b1d00",
+                        "on-surface": "#1c1c1a",
+                        "on-secondary-fixed-variant": "#584237",
+                        "surface-dim": "#dcdad6",
+                        "error-container": "#ffdad6",
+                        "surface": "#fcf9f5",
+                        "on-secondary-container": "#785f53",
+                        "secondary-fixed-dim": "#dfc0b1",
+                        "secondary-fixed": "#fddccc",
+                        "background": "#fcf9f5",
+                        "inverse-primary": "#c8cb87",
+                        "secondary": "#71594d",
+                        "outline-variant": "#cdc4cb",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#c8cb87",
+                        "tertiary-fixed-dim": "#c7c6c4",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed": "#e3e2e0",
+                        "primary-fixed": "#e4e7a1",
+                        "on-background": "#1c1c1a",
+                        "surface-container-low": "#f6f3ef",
+                        "surface-container-highest": "#e5e2de",
+                        "tertiary-container": "#323331",
+                        "primary": "#1e2000",
+                        "on-primary-fixed-variant": "#474a14",
+                        "on-tertiary-container": "#9b9b99",
+                        "surface-bright": "#fcf9f5",
+                        "surface-container": "#f0ede9",
+                        "on-tertiary-fixed-variant": "#464745",
+                        "on-primary-container": "#9da060",
+                        "inverse-on-surface": "#f3f0ec"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "12px",
+                        "stack-md": "24px",
+                        "margin-mobile": "20px",
+                        "gutter": "24px",
+                        "unit": "8px",
+                        "margin-desktop": "64px",
+                        "container-max": "1280px",
+                        "stack-lg": "48px"
+                    },
+                    "fontFamily": {
+                        "headline-sm": ["Noto Serif"],
+                        "headline-md": ["Noto Serif"],
+                        "display-lg": ["Noto Serif"],
+                        "label-md": ["Space Mono"],
+                        "display-lg-mobile": ["Noto Serif"],
+                        "caption": ["Space Mono"],
+                        "body-md": ["Space Mono"],
+                        "body-lg": ["Space Mono"]
+                    },
+                    "fontSize": {
+                        "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                        "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                        "display-lg": ["64px", {"lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "display-lg-mobile": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "caption": ["10px", {"lineHeight": "14px", "fontWeight": "400"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .earthy-card {
+            background: #ffffff;
+            border: 1px solid #e5e2de;
+            box-shadow: 0 2px 8px -2px rgba(40, 24, 14, 0.05);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .scroll-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scroll-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        body {
+            font-family: 'Space Mono', monospace;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Noto Serif', serif;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex">
+<!-- SideNavBar Anchor -->
+<aside class="hidden lg:flex flex-col h-screen sticky left-0 w-[280px] bg-surface-container-low border-r border-outline-variant p-4 z-40">
+<div class="flex items-center gap-3 mb-8 px-2">
+<div class="w-10 h-10 rounded bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined">school</span>
+</div>
+<div>
+<h1 class="text-headline-sm font-bold text-primary leading-none">UniSphere</h1>
+<p class="text-caption text-on-surface-variant uppercase tracking-tighter">Campus Hub</p>
+</div>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-4 text-on-surface-variant p-3 hover:bg-surface-variant/50 transition-all duration-200 rounded active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant p-3 hover:bg-surface-variant/50 transition-all duration-200 rounded active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined">event</span>
+<span class="text-body-md">Events</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant p-3 hover:bg-surface-variant/50 transition-all duration-200 rounded active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-body-md">Clubs</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant p-3 hover:bg-surface-variant/50 transition-all duration-200 rounded active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="text-body-md">Academic</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant p-3 hover:bg-surface-variant/50 transition-all duration-200 rounded active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined">forum</span>
+<span class="text-body-md">Social</span>
+</a>
+<a class="flex items-center gap-4 bg-primary text-on-primary rounded p-3 active:scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="text-body-md">Analytics</span>
+</a>
+</nav>
+<div class="mt-auto pt-4 space-y-2 border-t border-outline-variant">
+<a class="flex items-center gap-4 text-on-surface-variant p-3 hover:bg-surface-variant/50 transition-all duration-200 rounded" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-body-md">Settings</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant p-3 hover:bg-surface-variant/50 transition-all duration-200 rounded" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="text-body-md">Help</span>
+</a>
+</div>
+</aside>
+<div class="flex-1 flex flex-col min-h-screen">
+<!-- TopNavBar Anchor -->
+<header class="w-full sticky top-0 backdrop-blur-md bg-surface/80 border-b border-outline-variant z-50 px-6 lg:px-margin-desktop py-4">
+<div class="max-w-container-max mx-auto flex justify-between items-center">
+<h2 class="lg:hidden text-headline-sm font-bold text-primary">UniSphere</h2>
+<div class="hidden lg:block relative w-96">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container rounded-none border border-outline-variant focus:ring-1 focus:ring-primary text-body-md" placeholder="Search campus..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined p-2 hover:bg-surface-container-high transition-colors cursor-pointer text-primary">notifications</button>
+<button class="material-symbols-outlined p-2 hover:bg-surface-container-high transition-colors cursor-pointer text-primary">calendar_today</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-primary transition-transform hover:scale-105 cursor-pointer">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCm9BRbjnuRjm0B6oiK_s8qRiWAeSOWHe0RGVranikaD2gGSrgE5K7bF-E9sDPzh1kb3BKog-hN9QsgLqlrDi2rBnGA3197TxWROHdpQHDxTXJVtQiwGzbjRS6axRGhxcs6bZTFW8RjzK3elFpPa8ygcB79wgrFq61lWnoJ4miq-bsDfeqPepSV0pTafW1ikqcynhdYEhF4no6fymstKE-d-3J0A3pWx2fVoKufPoceaw0R0dcLT2p1Cy6hlU4qz-_IyFERQGa4QDI"/>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-1 p-6 lg:p-margin-desktop max-w-container-max mx-auto w-full">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Profile Section -->
+<section class="lg:col-span-5 space-y-6">
+<div class="earthy-card p-8">
+<div class="flex flex-col items-center text-center">
+<div class="w-32 h-32 rounded mb-6 p-1 bg-surface-variant border border-outline-variant">
+<img class="w-full h-full object-cover rounded" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeAuP3JBMtKXpaaEWW-2wE-ciKlt3NxcrYfAvM-eFdVcOqpzMQHDhAs2DHxPeL4sAtSlEOawA4qu0tDve3yL6UNaRep2izLkqtByHTAQuooY4Kbsfu8MDqqy4LJISNFuex__S6hDG5VFNn6F4GCjF6tNbf2G_0tE6_8yQSCSeZjkZTBj1ShqctV1CQjsxymNgBG_GFpmadtna6kHLiPepppiMTdUYdR-qM1TdwwMESu_HmmawSVYOvESQHaXf3YGtG2MKv3_H3r1s"/>
+</div>
+<h3 class="text-headline-md text-on-surface mb-1">Alex Rivera</h3>
+<p class="text-label-md text-secondary uppercase tracking-widest mb-6">Class of 2025 • AI &amp; Robotics</p>
+<div class="grid grid-cols-3 gap-4 w-full border-y border-outline-variant py-6 mb-6">
+<div>
+<p class="text-headline-sm font-bold text-primary">12</p>
+<p class="text-caption text-on-surface-variant uppercase">Clubs</p>
+</div>
+<div>
+<p class="text-headline-sm font-bold text-secondary">48</p>
+<p class="text-caption text-on-surface-variant uppercase">Events</p>
+</div>
+<div>
+<p class="text-headline-sm font-bold text-on-secondary-fixed-variant">920</p>
+<p class="text-caption text-on-surface-variant uppercase">Points</p>
+</div>
+</div>
+<p class="text-body-md text-on-surface-variant text-left leading-relaxed">
+                            Aspiring roboticist and AI researcher. President of the "Code-X" Society and lead organizer for the annual Campus Hackathon. Passionate about leveraging smart systems to improve campus accessibility.
+                        </p>
+</div>
+</div>
+<!-- Memberships -->
+<div class="earthy-card p-6">
+<h4 class="text-headline-sm text-on-surface mb-6">Club Memberships</h4>
+<div class="flex flex-wrap gap-3">
+<div class="flex items-center gap-3 bg-surface-container-low px-4 py-2 border border-outline-variant">
+<span class="material-symbols-outlined text-primary">smart_toy</span>
+<span class="text-label-md font-bold text-on-surface">Robotics Club</span>
+</div>
+<div class="flex items-center gap-3 bg-surface-container-low px-4 py-2 border border-outline-variant">
+<span class="material-symbols-outlined text-primary">terminal</span>
+<span class="text-label-md font-bold text-on-surface">Code-X</span>
+</div>
+<div class="flex items-center gap-3 bg-surface-container-low px-4 py-2 border border-outline-variant">
+<span class="material-symbols-outlined text-primary">palette</span>
+<span class="text-label-md font-bold text-on-surface">Digital Arts</span>
+</div>
+</div>
+</div>
+<!-- Badges -->
+<div class="earthy-card p-6">
+<h4 class="text-headline-sm text-on-surface mb-6">Participation Badges</h4>
+<div class="grid grid-cols-4 gap-4">
+<div class="aspect-square border border-outline-variant flex flex-col items-center justify-center p-2 text-center hover:bg-surface-container-low transition-colors group">
+<span class="material-symbols-outlined text-primary text-2xl mb-1">workspace_premium</span>
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">Top Contributor</span>
+</div>
+<div class="aspect-square border border-outline-variant flex flex-col items-center justify-center p-2 text-center hover:bg-surface-container-low transition-colors group">
+<span class="material-symbols-outlined text-secondary text-2xl mb-1">military_tech</span>
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">Event Mentor</span>
+</div>
+<div class="aspect-square border border-outline-variant flex flex-col items-center justify-center p-2 text-center hover:bg-surface-container-low transition-colors group">
+<span class="material-symbols-outlined text-on-secondary-fixed-variant text-2xl mb-1">eco</span>
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">Green Campus</span>
+</div>
+<div class="aspect-square border border-outline-variant flex flex-col items-center justify-center p-2 text-center hover:bg-surface-container-low transition-colors group">
+<span class="material-symbols-outlined text-on-secondary-fixed-variant text-2xl mb-1">bolt</span>
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">Fast Learner</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Notification Hub Section -->
+<section class="lg:col-span-7 space-y-6">
+<div class="flex items-center justify-between">
+<h3 class="text-headline-md text-on-surface">Activity Feed</h3>
+<button class="bg-primary text-on-primary px-6 py-2 text-label-md uppercase tracking-wider hover:bg-on-primary-fixed-variant transition-colors">Mark all read</button>
+</div>
+<div class="space-y-4">
+<!-- Notification Item: Registration -->
+<div class="earthy-card p-6 flex gap-5 border-l-4 border-l-secondary">
+<div class="w-12 h-12 bg-surface-container-high flex items-center justify-center shrink-0 border border-outline-variant">
+<span class="material-symbols-outlined text-secondary">check_circle</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-2">
+<h5 class="text-body-lg font-bold text-on-surface">Registration Confirmed</h5>
+<span class="text-caption text-on-surface-variant font-bold uppercase tracking-tighter">2m ago</span>
+</div>
+<p class="text-body-md text-on-surface-variant mb-4">Your entry for the "Future of AI Ethics" seminar has been secured. Check your email for the digital pass and calendar invite.</p>
+<button class="text-primary text-label-md font-bold uppercase border-b border-primary hover:border-transparent transition-all">View Pass</button>
+</div>
+</div>
+<!-- Notification Item: Club Invite -->
+<div class="earthy-card p-6 flex gap-5 border-l-4 border-l-primary">
+<div class="w-12 h-12 bg-surface-container-high flex items-center justify-center shrink-0 border border-outline-variant">
+<span class="material-symbols-outlined text-primary">group_add</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-2">
+<h5 class="text-body-lg font-bold text-on-surface">Club Invite: Neural Network Explorers</h5>
+<span class="text-caption text-on-surface-variant font-bold uppercase tracking-tighter">1h ago</span>
+</div>
+<p class="text-body-md text-on-surface-variant mb-5">Professor Chen has invited you to join the research focus group for Advanced Neural Architectures starting next semester.</p>
+<div class="flex gap-4">
+<button class="bg-primary text-on-primary px-8 py-2 text-label-md uppercase tracking-widest hover:opacity-90">Accept</button>
+<button class="border border-outline-variant px-8 py-2 text-label-md uppercase tracking-widest hover:bg-surface-container-low">Decline</button>
+</div>
+</div>
+</div>
+<!-- Notification Item: New Message -->
+<div class="earthy-card p-6 flex gap-5 border-l-4 border-l-secondary">
+<div class="w-12 h-12 rounded overflow-hidden shrink-0 border border-outline-variant">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1SvlxnKgh6dnzKjQtO_BklMQGxPRLV6zeFCiPbg570HXBmFER0ylvCAuwf5OQF0f7VJIBbLcOVhR3zZHOu6jDzrDhsyY8oK1_aPm-MizPOVtSn_wy5eg0efEoETT7pVeirIr9LqEhnkIj7ieCa2M0tJ__MP2UMRpVEYveVvdpum99rhhDIc5FWKkjuw2kh4TyuuN16RgUW5qCPCX5_VN77RkPLe3nk5Tl5tddW6CYwJvgK44F-rAvpDQfTIObKYfnUylp80oLxN0"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-2">
+<h5 class="text-body-lg font-bold text-on-surface">Marcus Thorne sent a message</h5>
+<span class="text-caption text-on-surface-variant font-bold uppercase tracking-tighter">3h ago</span>
+</div>
+<p class="text-body-md italic text-on-surface-variant border-l-2 border-outline-variant pl-4 mb-4">"Hey Alex! Did you manage to debug the lidar sensor code for the rover project? We're meeting at the lab at 4pm today."</p>
+<div class="flex items-center gap-3">
+<input class="flex-1 bg-surface-container-low border border-outline-variant px-4 py-2 text-body-md focus:ring-1 focus:ring-primary rounded-none" placeholder="Quick reply..." type="text"/>
+<button class="material-symbols-outlined text-primary bg-surface-container-high p-2 hover:bg-surface-variant border border-outline-variant">send</button>
+</div>
+</div>
+</div>
+<!-- AI Suggestion Card -->
+<div class="p-8 bg-primary-container text-on-primary-container border border-outline relative overflow-hidden">
+<div class="absolute -right-8 -bottom-8 opacity-5">
+<span class="material-symbols-outlined text-[160px]">auto_awesome</span>
+</div>
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-on-primary-container">auto_awesome</span>
+<span class="text-label-md uppercase tracking-[0.2em] font-bold">UniSphere Intelligence</span>
+</div>
+<h4 class="text-headline-sm mb-4">Recommended: Robotics Hackathon</h4>
+<p class="text-body-md text-on-primary-container/90 mb-6 max-w-lg leading-relaxed">Based on your recent participation in "Code-X" and your "AI &amp; Robotics" major, you might be interested in the 48-hour hardware challenge this Friday.</p>
+<button class="bg-on-primary-container text-primary-container px-8 py-3 text-label-md font-bold uppercase tracking-widest flex items-center gap-3 hover:opacity-90 transition-all">
+                            Learn More <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+<!-- Older Notifications -->
+<div class="earthy-card p-6 flex gap-5 opacity-70 grayscale">
+<div class="w-12 h-12 bg-surface-container-high flex items-center justify-center shrink-0 border border-outline-variant">
+<span class="material-symbols-outlined text-on-surface-variant">assignment</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h5 class="text-body-lg font-bold text-on-surface">Grade Posted: Computer Vision</h5>
+<span class="text-caption text-on-surface-variant font-bold uppercase tracking-tighter">Yesterday</span>
+</div>
+<p class="text-body-md text-on-surface-variant">Final grades for CS402 have been released. View your feedback on the Student Portal.</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<footer class="w-full mt-auto py-10 px-6 lg:px-margin-desktop bg-surface-container-low border-t border-outline-variant">
+<div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-4">
+<span class="text-label-md font-bold text-primary uppercase tracking-widest">UniSphere Smart Campus</span>
+<span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+<span class="text-caption text-on-surface-variant">© 2024</span>
+</div>
+<div class="flex gap-8">
+<a class="text-caption font-bold text-on-surface-variant hover:text-primary uppercase tracking-widest transition-colors" href="#">Campus Map</a>
+<a class="text-caption font-bold text-on-surface-variant hover:text-primary uppercase tracking-widest transition-colors" href="#">Directory</a>
+<a class="text-caption font-bold text-on-surface-variant hover:text-primary uppercase tracking-widest transition-colors" href="#">Privacy</a>
+<a class="text-caption font-bold text-on-surface-variant hover:text-primary uppercase tracking-widest transition-colors" href="#">Support</a>
+</div>
+</div>
+</footer>
+</div>
+<!-- Mobile BottomNavBar Simulation -->
+<nav class="lg:hidden fixed bottom-0 left-0 right-0 bg-surface border-t border-outline-variant z-50 flex justify-around items-center py-4 px-6 shadow-lg">
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-bold uppercase">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">event</span>
+<span class="text-[10px] font-bold uppercase">Events</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+<span class="text-[10px] font-bold uppercase">Profile</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">notifications</span>
+<span class="text-[10px] font-bold uppercase">Inbox</span>
+</button>
+</nav>
+<script>
+    // Minimal Search Focus Effect
+    const searchInput = document.querySelector('input[placeholder="Search campus..."]');
+    if (searchInput) {
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('ring-1', 'ring-primary');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('ring-1', 'ring-primary');
+        });
+    }
+</script>
+</body></html>

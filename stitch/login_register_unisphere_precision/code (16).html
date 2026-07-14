@@ -1,0 +1,308 @@
+
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>UniSphere | Smart Campus Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@500;600&amp;family=Space+Mono:wght@400;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(252, 249, 245, 0.8);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(124, 117, 123, 0.1);
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "on-secondary-fixed": "#28180e",
+                "on-error-container": "#93000a",
+                "on-tertiary": "#ffffff",
+                "error": "#ba1a1a",
+                "tertiary": "#1d1e1d",
+                "on-tertiary-fixed": "#1a1c1a",
+                "outline": "#7c757b",
+                "inverse-surface": "#31302e",
+                "on-surface-variant": "#4b454b",
+                "on-secondary": "#ffffff",
+                "surface-variant": "#e5e2de",
+                "secondary-container": "#fddccc",
+                "surface-tint": "#5f6229",
+                "surface-container-lowest": "#ffffff",
+                "primary-container": "#333602",
+                "on-primary-fixed": "#1b1d00",
+                "on-surface": "#1c1c1a",
+                "on-secondary-fixed-variant": "#584237",
+                "surface-dim": "#dcdad6",
+                "error-container": "#ffdad6",
+                "surface": "#fcf9f5",
+                "on-secondary-container": "#785f53",
+                "secondary-fixed-dim": "#dfc0b1",
+                "secondary-fixed": "#fddccc",
+                "background": "#fcf9f5",
+                "inverse-primary": "#c8cb87",
+                "secondary": "#71594d",
+                "outline-variant": "#cdc4cb",
+                "on-error": "#ffffff",
+                "primary-fixed-dim": "#c8cb87",
+                "tertiary-fixed-dim": "#c7c6c4",
+                "on-primary": "#ffffff",
+                "tertiary-fixed": "#e3e2e0",
+                "primary-fixed": "#e4e7a1",
+                "on-background": "#1c1c1a",
+                "surface-container-low": "#f6f3ef",
+                "surface-container-highest": "#e5e2de",
+                "tertiary-container": "#323331",
+                "primary": "#1e2000",
+                "on-primary-fixed-variant": "#474a14",
+                "on-tertiary-container": "#9b9b99",
+                "surface-bright": "#fcf9f5",
+                "surface-container-high": "#eae8e4",
+                "surface-container": "#f0ede9",
+                "on-tertiary-fixed-variant": "#464745",
+                "on-primary-container": "#9da060",
+                "inverse-on-surface": "#f3f0ec"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "stack-sm": "12px",
+                "stack-md": "24px",
+                "margin-mobile": "20px",
+                "gutter": "24px",
+                "unit": "8px",
+                "margin-desktop": "64px",
+                "container-max": "1280px",
+                "stack-lg": "48px"
+        },
+        "fontFamily": {
+                "headline-sm": ["Noto Serif"],
+                "headline-md": ["Noto Serif"],
+                "display-lg": ["Noto Serif"],
+                "label-md": ["Space Mono"],
+                "display-lg-mobile": ["Noto Serif"],
+                "caption": ["Space Mono"],
+                "body-md": ["Space Mono"],
+                "body-lg": ["Space Mono"]
+        },
+        "fontSize": {
+                "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                "display-lg": ["64px", {"lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                "display-lg-mobile": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                "caption": ["10px", {"lineHeight": "14px", "fontWeight": "400"}],
+                "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+        }
+      },
+    },
+  }
+</script>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen selection:bg-primary-fixed selection:text-on-primary-fixed">
+<main class="flex min-h-screen overflow-hidden">
+<!-- Image Section (Visible on MD+) -->
+<div class="hidden md:flex md:w-1/2 lg:w-3/5 relative overflow-hidden bg-primary">
+<!-- Background Image with Overlay -->
+<div class="absolute inset-0 z-0 bg-cover bg-center transition-transform duration-1000" data-alt="A sophisticated, high-end photograph of a modern university library interior. Soft natural light streams through large windows onto dark wood tables and minimalist shelving. The atmosphere is quiet, focused, and prestigious. The color palette is earthy, with muted tones of stone, deep charcoal, and olive green, reflecting a luxury academic brand identity." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAwWl_8n3AVVa6VB_vToJrVpRsJxQGou-gpQ41c4eGnn-PyErb0It7RWxdLHD7Qwo9hEJk4sPGVSwfkxf8cn5iNc5_IlupIsQdXnUwV5ScY_bMnt8toN43hrDVUNn7gPCGTJCcXTPZ8eP7pzWWlPAe0TtzohR_ZDf8IBTVRmVtV2p2K6UmScMc9JZGvskVCp7wrwJtXcHIA6PotCoNt9K2owmCmmLCStdN_YGJNlKTXWELqGX1c2lZ3P40142x3XleOT4RXEAfx4s4')">
+</div>
+<!-- Tint & Gradient Overlays -->
+<div class="absolute inset-0 z-10 bg-tertiary/40 mix-blend-multiply"></div>
+<div class="absolute inset-0 z-20 bg-gradient-to-t from-tertiary via-transparent to-transparent opacity-80"></div>
+<!-- Brand Content Overlay -->
+<div class="absolute inset-0 z-30 flex flex-col justify-between p-16">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface/10 backdrop-blur-md flex items-center justify-center border border-white/20">
+<span class="material-symbols-outlined text-white text-3xl">school</span>
+</div>
+<span class="font-headline-md text-white font-semibold tracking-tight">UniSphere</span>
+</div>
+<div class="max-w-xl animate-float">
+<h1 class="font-display-lg text-display-lg text-white mb-6">Redefining academic precision.</h1>
+<p class="font-body-lg text-white/80 leading-relaxed max-w-lg">
+                        Step into a refined digital ecosystem where scholarly pursuits meet sophisticated technology. Manage your academic excellence with unparalleled clarity.
+                    </p>
+</div>
+<div class="flex gap-12">
+<div class="flex flex-col">
+<span class="font-headline-sm text-white">12k+</span>
+<span class="font-label-md text-white/60 uppercase">Students</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-white">450+</span>
+<span class="font-label-md text-white/60 uppercase">Institutions</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-white">99%</span>
+<span class="font-label-md text-white/60 uppercase">Retention</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Form Section -->
+<div class="w-full md:w-1/2 lg:w-2/5 bg-surface flex items-center justify-center p-8 md:p-12 lg:p-24 relative overflow-y-auto">
+<!-- Decorative Background Element -->
+<div class="absolute top-0 right-0 w-64 h-64 bg-secondary-fixed/30 rounded-full blur-3xl -mr-32 -mt-32"></div>
+<div class="w-full max-w-md z-10">
+<!-- Header/Toggle Container -->
+<div class="mb-10">
+<div class="md:hidden flex items-center gap-3 mb-8">
+<span class="material-symbols-outlined text-primary text-3xl">school</span>
+<span class="font-headline-sm text-primary">UniSphere</span>
+</div>
+<h2 class="font-headline-md text-on-surface mb-2">Welcome back</h2>
+<p class="text-on-surface-variant font-body-md">Sign in to your institutional portal.</p>
+</div>
+<!-- Role Selection Toggle -->
+<div class="flex p-1 bg-surface-container rounded-lg mb-8 relative">
+<div class="absolute top-1 left-1 bottom-1 w-[calc(50%-4px)] bg-surface-container-lowest rounded shadow-sm transition-all duration-300 ease-in-out" id="roleToggle"></div>
+<button class="relative z-10 flex-1 py-3 text-center font-label-md transition-colors duration-200" id="btn-student" onclick="toggleRole('student')">
+                        STUDENT
+                    </button>
+<button class="relative z-10 flex-1 py-3 text-center font-label-md text-on-surface-variant transition-colors duration-200" id="btn-faculty" onclick="toggleRole('faculty')">
+                        FACULTY
+                    </button>
+</div>
+<!-- Form Container -->
+<div class="glass-panel p-8 rounded-lg shadow-sm border border-outline/10" id="authContainer">
+<form class="space-y-6" id="loginForm" onsubmit="event.preventDefault();">
+<div>
+<label class="block font-label-md text-on-surface-variant mb-2 uppercase text-[10px]">Institutional Email</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-tertiary transition-colors">alternate_email</span>
+<input class="w-full pl-12 pr-4 py-3.5 bg-white border border-outline/20 rounded focus:ring-1 focus:ring-tertiary/20 focus:border-tertiary outline-none transition-all font-body-md" placeholder="jane.doe@university.edu" required="" type="email"/>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-2">
+<label class="block font-label-md text-on-surface-variant uppercase text-[10px]">Password</label>
+<a class="font-label-md text-tertiary hover:underline transition-all" href="#">Forgot?</a>
+</div>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-tertiary transition-colors">lock</span>
+<input class="w-full pl-12 pr-4 py-3.5 bg-white border border-outline/20 rounded focus:ring-1 focus:ring-tertiary/20 focus:border-tertiary outline-none transition-all font-body-md" placeholder="••••••••" required="" type="password"/>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<input class="w-4 h-4 rounded border-outline text-tertiary focus:ring-tertiary" id="remember" type="checkbox"/>
+<label class="font-body-md text-on-surface-variant cursor-pointer text-sm" for="remember">Maintain session for 30 days</label>
+</div>
+<button class="w-full py-4 bg-tertiary text-on-tertiary font-label-md rounded shadow-md hover:bg-tertiary/90 transition-all duration-200 uppercase tracking-widest" type="submit">
+                            Sign In
+                        </button>
+</form>
+<!-- Switch to Register -->
+<div class="mt-8 pt-8 border-t border-outline/10 text-center">
+<p class="font-body-md text-on-surface-variant text-sm">
+                            New to UniSphere? 
+                            <button class="text-tertiary font-semibold hover:underline ml-1" onclick="toggleView('register')">Request Access</button>
+</p>
+</div>
+</div>
+<!-- Register View (Hidden by default) -->
+<div class="hidden glass-panel p-8 rounded-lg shadow-sm border border-outline/10" id="registerContainer">
+<form class="space-y-4" onsubmit="event.preventDefault();">
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block font-label-md text-on-surface-variant mb-2 uppercase text-[10px]">First Name</label>
+<input class="w-full px-4 py-3 bg-white border border-outline/20 rounded focus:ring-1 focus:ring-tertiary/20 focus:border-tertiary outline-none font-body-md" placeholder="Jane" type="text"/>
+</div>
+<div>
+<label class="block font-label-md text-on-surface-variant mb-2 uppercase text-[10px]">Last Name</label>
+<input class="w-full px-4 py-3 bg-white border border-outline/20 rounded focus:ring-1 focus:ring-tertiary/20 focus:border-tertiary outline-none font-body-md" placeholder="Doe" type="text"/>
+</div>
+</div>
+<div>
+<label class="block font-label-md text-on-surface-variant mb-2 uppercase text-[10px]">Identification Number</label>
+<input class="w-full px-4 py-3 bg-white border border-outline/20 rounded focus:ring-1 focus:ring-tertiary/20 focus:border-tertiary outline-none font-body-md" placeholder="ST-2024-001" type="text"/>
+</div>
+<div>
+<label class="block font-label-md text-on-surface-variant mb-2 uppercase text-[10px]">Academic Email</label>
+<input class="w-full px-4 py-3 bg-white border border-outline/20 rounded focus:ring-1 focus:ring-tertiary/20 focus:border-tertiary outline-none font-body-md" placeholder="jane.doe@university.edu" type="email"/>
+</div>
+<div>
+<label class="block font-label-md text-on-surface-variant mb-2 uppercase text-[10px]">Secure Password</label>
+<input class="w-full px-4 py-3 bg-white border border-outline/20 rounded focus:ring-1 focus:ring-tertiary/20 focus:border-tertiary outline-none font-body-md" placeholder="••••••••" type="password"/>
+</div>
+<button class="w-full py-4 bg-tertiary text-on-tertiary font-label-md rounded shadow-md hover:bg-tertiary/90 transition-all mt-4 uppercase tracking-widest" type="submit">
+                            Register Account
+                        </button>
+</form>
+<div class="mt-6 text-center">
+<button class="text-on-surface-variant font-label-md hover:text-tertiary transition-colors flex items-center justify-center gap-2 mx-auto text-xs" onclick="toggleView('login')">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+                            RETURN TO SIGN IN
+                        </button>
+</div>
+</div>
+<!-- Help Link Footer -->
+<div class="mt-12 flex justify-center gap-8 border-t border-outline/5 pt-8">
+<a class="font-label-md text-on-surface-variant hover:text-tertiary transition-colors text-[10px] uppercase" href="#">Concierge</a>
+<a class="font-label-md text-on-surface-variant hover:text-tertiary transition-colors text-[10px] uppercase" href="#">Directory</a>
+<a class="font-label-md text-on-surface-variant hover:text-tertiary transition-colors text-[10px] uppercase" href="#">Privacy</a>
+</div>
+</div>
+</div>
+</main>
+<script>
+        function toggleRole(role) {
+            const toggle = document.getElementById('roleToggle');
+            const studentBtn = document.getElementById('btn-student');
+            const facultyBtn = document.getElementById('btn-faculty');
+
+            if (role === 'student') {
+                toggle.style.left = '4px';
+                studentBtn.classList.remove('text-on-surface-variant');
+                studentBtn.classList.add('text-tertiary', 'font-bold');
+                facultyBtn.classList.add('text-on-surface-variant');
+                facultyBtn.classList.remove('text-tertiary', 'font-bold');
+            } else {
+                toggle.style.left = 'calc(50% - 0px)';
+                facultyBtn.classList.remove('text-on-surface-variant');
+                facultyBtn.classList.add('text-tertiary', 'font-bold');
+                studentBtn.classList.add('text-on-surface-variant');
+                studentBtn.classList.remove('text-tertiary', 'font-bold');
+            }
+        }
+
+        function toggleView(view) {
+            const login = document.getElementById('authContainer');
+            const register = document.getElementById('registerContainer');
+            
+            if (view === 'register') {
+                login.classList.add('hidden');
+                register.classList.remove('hidden');
+            } else {
+                login.classList.remove('hidden');
+                register.classList.add('hidden');
+            }
+        }
+
+        // Initialize state
+        document.addEventListener('DOMContentLoaded', () => {
+            toggleRole('student');
+        });
+    </script>
+</body></html>

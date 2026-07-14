@@ -1,0 +1,464 @@
+
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI &amp; Ethics Symposium | UniSphere</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@500;600&amp;family=Space+Mono:wght@400;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration for Earthy Precision Theme -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "on-secondary-fixed": "#28180e",
+                "on-error-container": "#93000a",
+                "on-tertiary": "#ffffff",
+                "error": "#ba1a1a",
+                "tertiary": "#1d1e1d",
+                "on-tertiary-fixed": "#1a1c1a",
+                "outline": "#7c757b",
+                "inverse-surface": "#31302e",
+                "on-surface-variant": "#4b454b",
+                "on-secondary": "#ffffff",
+                "surface-variant": "#e5e2de",
+                "secondary-container": "#fddccc",
+                "surface-tint": "#5f6229",
+                "surface-container-lowest": "#ffffff",
+                "primary-container": "#333602",
+                "on-primary-fixed": "#1b1d00",
+                "on-surface": "#1c1c1a",
+                "on-secondary-fixed-variant": "#584237",
+                "surface-dim": "#dcdad6",
+                "error-container": "#ffdad6",
+                "surface": "#fcf9f5",
+                "on-secondary-container": "#785f53",
+                "secondary-fixed-dim": "#dfc0b1",
+                "secondary-fixed": "#fddccc",
+                "background": "#fcf9f5",
+                "inverse-primary": "#c8cb87",
+                "secondary": "#71594d",
+                "outline-variant": "#cdc4cb",
+                "on-error": "#ffffff",
+                "primary-fixed-dim": "#c8cb87",
+                "tertiary-fixed-dim": "#c7c6c4",
+                "on-primary": "#ffffff",
+                "tertiary-fixed": "#e3e2e0",
+                "primary-fixed": "#e4e7a1",
+                "on-background": "#1c1c1a",
+                "surface-container-low": "#f6f3ef",
+                "surface-container-highest": "#e5e2de",
+                "tertiary-container": "#323331",
+                "primary": "#1e2000",
+                "on-primary-fixed-variant": "#474a14",
+                "on-tertiary-container": "#9b9b99",
+                "surface-bright": "#fcf9f5",
+                "surface-container-high": "#eae8e4",
+                "surface-container": "#f0ede9",
+                "on-tertiary-fixed-variant": "#464745",
+                "on-primary-container": "#9da060",
+                "inverse-on-surface": "#f3f0ec"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "stack-sm": "12px",
+                "stack-md": "24px",
+                "margin-mobile": "20px",
+                "gutter": "24px",
+                "unit": "8px",
+                "margin-desktop": "64px",
+                "container-max": "1280px",
+                "stack-lg": "48px"
+            },
+            "fontFamily": {
+                "headline-sm": ["Noto Serif"],
+                "headline-md": ["Noto Serif"],
+                "display-lg": ["Noto Serif"],
+                "label-md": ["Space Mono"],
+                "display-lg-mobile": ["Noto Serif"],
+                "caption": ["Space Mono"],
+                "body-md": ["Space Mono"],
+                "body-lg": ["Space Mono"]
+            },
+            "fontSize": {
+                "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                "display-lg": ["64px", {"lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                "display-lg-mobile": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                "caption": ["10px", {"lineHeight": "14px", "fontWeight": "400"}],
+                "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .luxury-glass {
+            background: rgba(252, 249, 245, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(124, 117, 123, 0.2);
+        }
+        .bento-border {
+            border: 1px solid #cdc4cb;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+<div class="flex min-h-screen">
+<!-- Sidebar Navigation -->
+<aside class="w-[280px] h-screen sticky left-0 hidden lg:flex flex-col p-4 border-r border-outline-variant bg-surface shadow-sm">
+<div class="mb-10 px-4">
+<h1 class="font-headline-md text-headline-sm font-bold text-primary">UniSphere</h1>
+<p class="font-label-md text-caption text-on-surface-variant">Smart Campus Hub</p>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-4 text-on-surface-variant p-3 hover:bg-surface-container transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 bg-tertiary text-on-tertiary rounded-lg p-3 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">event</span>
+<span class="font-body-md text-body-md">Events</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant p-3 hover:bg-surface-container transition-all" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-body-md text-body-md">Clubs</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant p-3 hover:bg-surface-container transition-all" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="font-body-md text-body-md">Academic</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant p-3 hover:bg-surface-container transition-all" href="#">
+<span class="material-symbols-outlined">forum</span>
+<span class="font-body-md text-body-md">Social</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant p-3 hover:bg-surface-container transition-all" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-body-md text-body-md">Analytics</span>
+</a>
+</nav>
+<button class="w-full mb-8 bg-primary text-on-primary py-3 rounded-lg font-label-md shadow-sm hover:opacity-90 transition-all">
+            CREATE EVENT
+        </button>
+<div class="pt-6 border-t border-outline-variant space-y-1">
+<a class="flex items-center gap-4 text-on-surface-variant p-3 hover:bg-surface-container transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md text-body-sm">Settings</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant p-3 hover:bg-surface-container transition-all" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-body-md text-body-sm">Help</span>
+</a>
+</div>
+</aside>
+<main class="flex-1 flex flex-col min-w-0">
+<!-- Top App Bar -->
+<header class="w-full sticky top-0 backdrop-blur-md z-50 flex justify-between items-center px-6 lg:px-margin-desktop py-4 bg-surface/80 border-b border-outline-variant">
+<div class="lg:hidden font-headline-sm text-primary">UniSphere</div>
+<div class="hidden lg:flex items-center gap-2">
+<span class="font-body-sm text-on-surface-variant">Events / </span>
+<span class="font-body-sm font-semibold text-primary">AI &amp; Ethics Symposium</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex items-center bg-surface-container-low px-4 py-2 rounded-lg border border-outline-variant">
+<span class="material-symbols-outlined text-outline">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-sm ml-2 w-48 placeholder:text-outline" placeholder="Search events..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">calendar_today</button>
+<div class="w-10 h-10 rounded-full border border-outline overflow-hidden shadow-sm">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAn1cAqRC6T_7wUgAlUIGQr7aR9K_nE9qNRR2eptVJXSagXNGEtP7TAkGbgTq7Ca0OcBbd8cHCBADDOj8dNw-1cTnba1kVipRV5e4FNtTA82rshAAvNzw7LS2t7teRfJYkt9Aq1AnEXEVQRFr3COkxdpLHTA_0VfMsRhV5xnC-vTkCp_igOgRXY8_G6tYH7nNoWc_CqwrHHOhPm_3DU_PjCFrbNxIVDvEvW4C2pxwOxkOahOH6AH90FDrfCFhm2jSChG1OjPwxogU0"/>
+</div>
+</div>
+</div>
+</header>
+<div class="flex-1 overflow-y-auto">
+<div class="max-w-container-max mx-auto px-6 lg:px-margin-desktop py-8">
+<!-- Hero Section -->
+<div class="relative w-full aspect-[21/9] rounded-xl overflow-hidden shadow-md mb-12 border border-outline-variant">
+<img class="w-full h-full object-cover grayscale-[0.2] contrast-125" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBw7pw7KJyidvMYY40iJsT3iNlWXB-BTOgIrVepRR0wCRiJa7Rr9Ew-mWs9yeihqGZKVP_H_FVEDtD92i5MaxBe-3OMvstKCsukP_Ll_tWlpwzh7abmiYzFAXynuA95wjTAyP765XChiuDPu8s9lns0qSO2UmhgngvCN-HQEgkt6g4GQHWRD_7Lh0eQdAQ_-O9PG12LuiHtDH-o2g3xhnjovcdLicGIueZA6S12Y5TSmfaxamKh01f2cxlCzjAN9UDd7e-Mx0g375k"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-8 lg:p-12">
+<div class="flex flex-wrap gap-3 mb-4">
+<span class="px-4 py-1.5 bg-tertiary text-on-tertiary rounded font-label-md text-label-md uppercase tracking-widest">Academic</span>
+<span class="px-4 py-1.5 bg-secondary text-on-secondary rounded font-label-md text-label-md uppercase tracking-widest">Global Access</span>
+</div>
+<h2 class="font-display-lg text-display-lg-mobile lg:text-display-lg text-white mb-4 lg:max-w-3xl">AI &amp; Ethics Symposium 2024</h2>
+<div class="flex flex-wrap items-center gap-8 text-white/80">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined">schedule</span>
+<span class="font-body-md text-body-md">Oct 24, 09:00 AM - 05:00 PM</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined">location_on</span>
+<span class="font-body-md text-body-md">Main Grand Auditorium</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined">group</span>
+<span class="font-body-md text-body-md">1.2k Students Registered</span>
+</div>
+</div>
+</div>
+<div class="absolute top-8 right-8">
+<button class="luxury-glass px-6 py-2.5 rounded-lg text-primary font-label-md flex items-center gap-2 shadow-sm hover:bg-surface transition-all">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300;">share</span>
+                            SHARE
+                        </button>
+</div>
+</div>
+<!-- Main Content Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Column -->
+<div class="lg:col-span-8 space-y-12">
+<!-- Registration CTA -->
+<section class="bg-surface-container p-8 rounded-xl flex flex-col md:flex-row items-center justify-between gap-6 border border-outline-variant">
+<div class="space-y-1">
+<h3 class="font-headline-sm text-primary">Secure Your Spot</h3>
+<p class="font-body-md text-on-surface-variant">Limited seats available for the morning keynote session.</p>
+</div>
+<div class="flex items-center gap-4 w-full md:w-auto">
+<button class="flex-1 md:flex-none px-8 py-4 bg-tertiary text-on-tertiary rounded-lg font-label-md text-label-md shadow-sm hover:opacity-90 transition-all uppercase tracking-widest">
+                                    Register Now
+                                </button>
+<button class="p-4 border border-outline text-on-surface-variant rounded-lg hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined">bookmark</span>
+</button>
+</div>
+</section>
+<!-- About Section -->
+<section class="space-y-6">
+<h3 class="font-headline-sm border-b border-outline-variant pb-4">About the Event</h3>
+<div class="font-body-lg text-on-surface-variant leading-relaxed space-y-4">
+<p>Join us for the most anticipated academic event of the semester. The AI &amp; Ethics Symposium brings together world-renowned researchers, industry leaders, and philosophers to tackle the pressing questions surrounding the rapid advancement of artificial intelligence.</p>
+<p>From algorithmic bias to the future of cognitive labor, we will explore the intersection of technology and human values through a series of interactive panels and hands-on workshops.</p>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4">
+<div class="bg-surface p-4 rounded-lg border border-outline-variant text-center">
+<p class="font-label-md text-caption text-on-surface-variant mb-1 uppercase tracking-widest">Keynotes</p>
+<p class="font-headline-sm text-primary">03</p>
+</div>
+<div class="bg-surface p-4 rounded-lg border border-outline-variant text-center">
+<p class="font-label-md text-caption text-on-surface-variant mb-1 uppercase tracking-widest">Panels</p>
+<p class="font-headline-sm text-primary">05</p>
+</div>
+<div class="bg-surface p-4 rounded-lg border border-outline-variant text-center">
+<p class="font-label-md text-caption text-on-surface-variant mb-1 uppercase tracking-widest">Workshops</p>
+<p class="font-headline-sm text-primary">08</p>
+</div>
+<div class="bg-surface p-4 rounded-lg border border-outline-variant text-center">
+<p class="font-label-md text-caption text-on-surface-variant mb-1 uppercase tracking-widest">Credits</p>
+<p class="font-headline-sm text-primary">06</p>
+</div>
+</div>
+</section>
+<!-- Agenda Section -->
+<section class="space-y-6">
+<h3 class="font-headline-sm border-b border-outline-variant pb-4">Event Agenda</h3>
+<div class="space-y-0">
+<!-- Timeline Item -->
+<div class="flex gap-8 group">
+<div class="flex flex-col items-center">
+<div class="w-3 h-3 rounded-full bg-primary mt-1.5"></div>
+<div class="w-px h-full bg-outline-variant group-last:bg-transparent my-2"></div>
+</div>
+<div class="pb-10 flex-1">
+<div class="flex justify-between items-start mb-2">
+<p class="font-label-md text-label-md text-primary uppercase tracking-widest">09:00 AM — 10:30 AM</p>
+<span class="px-2 py-0.5 bg-surface-container-highest text-on-surface-variant rounded text-[10px] uppercase font-label-md">Main Hall</span>
+</div>
+<h4 class="font-headline-sm text-[20px] mb-2 text-on-surface">The Algorithmic Mirror: AI and Identity</h4>
+<p class="font-body-md text-on-surface-variant leading-relaxed">Opening keynote by Dr. Sarah Chen exploring how generative models reflect and distort human cultural identities.</p>
+</div>
+</div>
+<div class="flex gap-8 group">
+<div class="flex flex-col items-center">
+<div class="w-3 h-3 rounded-full bg-secondary mt-1.5"></div>
+<div class="w-px h-full bg-outline-variant group-last:bg-transparent my-2"></div>
+</div>
+<div class="pb-10 flex-1">
+<div class="flex justify-between items-start mb-2">
+<p class="font-label-md text-label-md text-secondary uppercase tracking-widest">11:00 AM — 12:30 PM</p>
+<span class="px-2 py-0.5 bg-surface-container-highest text-on-surface-variant rounded text-[10px] uppercase font-label-md">Labs</span>
+</div>
+<h4 class="font-headline-sm text-[20px] mb-2 text-on-surface">Policy &amp; Prototypes: A Design Workshop</h4>
+<p class="font-body-md text-on-surface-variant leading-relaxed">Hands-on session using the UniSphere AI sandbox to test ethical guardrails on live LLM environments.</p>
+</div>
+</div>
+<div class="flex gap-8 group">
+<div class="flex flex-col items-center">
+<div class="w-3 h-3 rounded-full bg-tertiary mt-1.5"></div>
+<div class="w-px h-full bg-outline-variant group-last:bg-transparent my-2"></div>
+</div>
+<div class="pb-10 flex-1">
+<div class="flex justify-between items-start mb-2">
+<p class="font-label-md text-label-md text-on-tertiary-fixed-variant uppercase tracking-widest">02:00 PM — 03:30 PM</p>
+<span class="px-2 py-0.5 bg-surface-container-highest text-on-surface-variant rounded text-[10px] uppercase font-label-md">Amphitheater</span>
+</div>
+<h4 class="font-headline-sm text-[20px] mb-2 text-on-surface">Future Ethics: The 2030 Roadmap</h4>
+<p class="font-body-md text-on-surface-variant leading-relaxed">Panel discussion with industry experts from OpenMinds and DeepThought Research Labs.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Speakers Section -->
+<section class="space-y-6">
+<div class="flex justify-between items-center border-b border-outline-variant pb-4">
+<h3 class="font-headline-sm">Featured Speakers</h3>
+<a class="text-secondary font-label-md hover:underline uppercase tracking-widest text-[12px]" href="#">See All</a>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
+<div class="group">
+<div class="relative aspect-[3/4] rounded-lg overflow-hidden mb-4 grayscale hover:grayscale-0 transition-all duration-500 border border-outline-variant">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDRjg4lji-UkFAnIN_iZMOKPLI7h8KAOea7NE9D-JWEa_RZPbrKmIDaPKhqUnablidZI_QRjKoKKVS0JM9qwUTZSBBlvHF-z0PI07PGWywNhR53z0A9fACd4TFbtIFAe8Qbw5zR-6G-7D31RxphtuSYABgHP8d2HfT0NjDkkSOqjM0ybI0em3qNV0EuGvgVbA50Jb2BANmFhUWM4pPhEhurN6gcSxzc5VVyLHb8QQieO7odOaQgc-hNoSkdS-tvyRhkdINYxuGF6E"/>
+</div>
+<h4 class="font-headline-sm text-[18px] text-on-surface">Dr. Sarah Chen</h4>
+<p class="font-label-md text-caption text-on-surface-variant uppercase tracking-tighter">AI Ethics Lab</p>
+</div>
+<div class="group">
+<div class="relative aspect-[3/4] rounded-lg overflow-hidden mb-4 grayscale hover:grayscale-0 transition-all duration-500 border border-outline-variant">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWBFEPovKnRUrVAIz5ibgKoYKAESqpclOlxT9ClPdna_y7eEqd2PxupeiTsb2myiX0P2QUX10ui9_OGNXVXGGiW9txEnC53alELeVAbMGO2soe-XgH3gHLdmZ0HKrPsPFqEy-VFPbLlKyyYh9U07w47XsKldm-N-yeMu66rbx92wrqXDv1fmvIMJmpLr33qpKtDJB_KlODc_8oy3uQs52tNWAcc4-qPzMCJm4OEIbJxR4ndmOCzBBEMlRMfT5TJrQHYoQG1eX_Y5Q"/>
+</div>
+<h4 class="font-headline-sm text-[18px] text-on-surface">Marcus Vane</h4>
+<p class="font-label-md text-caption text-on-surface-variant uppercase tracking-tighter">DeepThought</p>
+</div>
+<div class="group">
+<div class="relative aspect-[3/4] rounded-lg overflow-hidden mb-4 grayscale hover:grayscale-0 transition-all duration-500 border border-outline-variant">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmiSUViLzhxP6bBV7Kepfa0kScDS8PSide-aSWaGjJcZ5mPyJtY3aR33g1Qr3zH3sT7RmAth7SSZP32lZ1JPFroo_olrCQWmhe4WkW5BY0M_l6kCOge_WqiGcCsnAEYASqdOh6Stry8UXILnfeLC_Z7Ux-2oqY5pCwkUyY37oFfLKqDFkmZlm7lbbdy37L1Jl2i97OaIkYEItdrln95eAUA5l3hSDKO9W9MV3YrGO-UkB1F-lalxuYIvfvRW-UoMAH_rTR6Ep3qk0"/>
+</div>
+<h4 class="font-headline-sm text-[18px] text-on-surface">Prof. Julian Reyes</h4>
+<p class="font-label-md text-caption text-on-surface-variant uppercase tracking-tighter">Moral Philosophy</p>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column Sidebar -->
+<aside class="lg:col-span-4 space-y-8">
+<!-- Smart Picks -->
+<section class="bg-surface p-6 rounded-xl border border-outline-variant space-y-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">verified</span>
+<h3 class="font-headline-sm text-[20px]">Curated Picks</h3>
+</div>
+<p class="font-body-md text-on-surface-variant">Recommended based on your interest in <span class="text-primary font-semibold italic">Machine Learning</span>.</p>
+<div class="space-y-4">
+<div class="p-4 bg-surface-container rounded-lg hover:border-secondary border border-transparent transition-all cursor-pointer group">
+<div class="flex justify-between items-start mb-2">
+<span class="font-label-md text-[10px] text-on-surface-variant uppercase tracking-widest">NOV 02</span>
+<span class="material-symbols-outlined text-outline group-hover:text-secondary transition-colors">arrow_forward</span>
+</div>
+<h4 class="font-headline-sm text-[16px] mb-1">Cyber-Physical Systems</h4>
+<p class="font-body-sm text-on-surface-variant line-clamp-1">Robotics and IoT integration.</p>
+</div>
+<div class="p-4 bg-surface-container rounded-lg hover:border-secondary border border-transparent transition-all cursor-pointer group">
+<div class="flex justify-between items-start mb-2">
+<span class="font-label-md text-[10px] text-on-surface-variant uppercase tracking-widest">NOV 10</span>
+<span class="material-symbols-outlined text-outline group-hover:text-secondary transition-colors">arrow_forward</span>
+</div>
+<h4 class="font-headline-sm text-[16px] mb-1">Privacy Hackathon</h4>
+<p class="font-body-sm text-on-surface-variant line-clamp-1">Build privacy-first applications.</p>
+</div>
+</div>
+<button class="w-full py-3 text-secondary font-label-md border-t border-outline-variant pt-4 hover:opacity-80 uppercase tracking-widest text-[11px]">
+                                Personalized Guide
+                            </button>
+</section>
+<!-- Map Card -->
+<section class="bg-surface rounded-xl overflow-hidden border border-outline-variant">
+<div class="h-40 relative grayscale contrast-125">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDD7PEsUl45sznDuoi1MvEGT68xODtgpqNZ9y9D7BiuXUguNUtlGFfD6foRSXhr-dsGlNk3ywMoR9JUp41X35Y-X-Pb1bpS4xRdt0YgrME6Goe_J3HI_HXzf847z0xLm_d0C9Y36e7mqx7PDy3SW-y6UH2XdraokZvo_1Oo8cPvXTKDtx_TWLCtHZMZt6bcIlJPFOrsl7_iHJk3wJBacuYNyCHTHMZYY_Srbe3MilFtwPZ0olPStYLuvwNcFH0JKbU3ggHqwnlKLvE"/>
+<div class="absolute inset-0 bg-primary/10"></div>
+</div>
+<div class="p-6">
+<h4 class="font-headline-sm text-[18px] mb-4">Location</h4>
+<div class="space-y-4">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary">pin_drop</span>
+<div>
+<p class="font-body-md font-semibold text-on-surface">Grand Auditorium</p>
+<p class="font-body-sm text-on-surface-variant">Engineering Wing, Level 2</p>
+</div>
+</div>
+<button class="w-full py-3 bg-surface border border-outline text-on-surface rounded-lg font-label-md hover:bg-surface-container transition-all uppercase tracking-widest text-[11px]">
+                                        Get Directions
+                                    </button>
+</div>
+</div>
+</section>
+<!-- Attendees -->
+<section class="px-2">
+<h4 class="font-label-md text-caption text-on-surface-variant uppercase tracking-widest mb-4">248 FRIENDS ATTENDING</h4>
+<div class="flex items-center">
+<div class="flex -space-x-2">
+<div class="w-10 h-10 rounded-full border-2 border-background overflow-hidden">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQmH6r6eVwoJL6utDYHld_iudAR2C9Ak2EZ7elvwK86M6o-CFOWq3gXwjHXo4KJlHqsZTg1eNQqm9SrqmuczFPjbnSyk4BgCKF_zP9bNAD_ObKT0BOby3WW48XIgZHxbbm-xLBjx0YHtC8qgms8L3OZnbUZaLLVjijnN9ABrJhUlWHELJJRUJGvWVAAgAjxUeVQ1VOFGoMPQb36FlmvP6K6fblmSRVISvrQUBhMOBUkpyWWNhrU27S_mX-aGPFi5Zp7JZHoevUSFw"/>
+</div>
+<div class="w-10 h-10 rounded-full border-2 border-background overflow-hidden">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDupN201EGijDn6razYGmJGZZmr8i4n57SQ-9UPhN80hVkSB9Mi4NKcEcogFe3B-XE0p8d3Y6j6nTzIjDL6kza70CezQsNV-27PB26tPkoMCXbIAUMf2mlhA3963Ad-wa7zzPrkOH3YJZSEQ8bJUvY2XcrIA3Q1PTvAIN5MPf1FMRGqizEKofuflpvwdNtsKt0v0T4l-FglNxRHhKxK6XOlbEsJXTwADaKeY6admLP4virtHKjKJ99PMDwjfXkuEv7o00nH_dM9Qbo"/>
+</div>
+<div class="w-10 h-10 rounded-full border-2 border-background overflow-hidden">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAX4b0T97gJXghrRTyLKkrdPZF7Xxf5zBIdpVnyPApxRLR_RfH9rjIBHmiAcWers9lO8MRRTcihP13HWb-gZeEQ0HjSsn1bmYnNoVEAYMkpG3zd2jpmCaMsfgujMKUJ9zfYm1ie8aL26Lp7gr_hG38bGLG2u5ZcGw-UgLGLrIns6K7GQMvp8pbQLdasKgxVdwWZsVsDLM9Ch5QvM6mm1nJNpBTXrB8sEFtDDvsIGBP2t6Izlzjc1w2khhZejg69Y-kElp5YEkIHSKU"/>
+</div>
+<div class="w-10 h-10 rounded-full bg-secondary text-on-secondary flex items-center justify-center text-[10px] font-bold border-2 border-background uppercase">
+                                        +244
+                                    </div>
+</div>
+</div>
+</section>
+</aside>
+</div>
+</div>
+<!-- Footer -->
+<footer class="w-full py-12 px-6 lg:px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-8 bg-surface border-t border-outline-variant">
+<div class="flex flex-col items-center md:items-start gap-2">
+<span class="font-label-md text-primary tracking-[0.2em]">UNISPHERE</span>
+<p class="font-body-sm text-on-surface-variant italic">Refining the Academic Journey</p>
+<p class="font-body-sm text-outline mt-2">© 2024 UniSphere Smart Campus.</p>
+</div>
+<div class="flex gap-8">
+<a class="font-label-md text-[11px] text-on-surface-variant hover:text-primary transition-colors uppercase tracking-widest" href="#">Campus Map</a>
+<a class="font-label-md text-[11px] text-on-surface-variant hover:text-primary transition-colors uppercase tracking-widest" href="#">Directory</a>
+<a class="font-label-md text-[11px] text-on-surface-variant hover:text-primary transition-colors uppercase tracking-widest" href="#">Privacy</a>
+<a class="font-label-md text-[11px] text-on-surface-variant hover:text-primary transition-colors uppercase tracking-widest" href="#">Support</a>
+</div>
+</footer>
+</div>
+</main>
+</div>
+<script>
+    // Registration interactivity with theme-consistent success state
+    document.querySelector('button.bg-tertiary').addEventListener('click', function() {
+        const btn = this;
+        btn.innerText = 'PROCESSING...';
+        btn.disabled = true;
+        
+        setTimeout(() => {
+            btn.innerText = 'REGISTERED';
+            btn.classList.remove('bg-tertiary');
+            btn.classList.add('bg-primary-container', 'text-on-primary-container');
+            
+            const toast = document.createElement('div');
+            toast.className = 'fixed bottom-8 right-8 bg-surface border border-outline-variant px-6 py-4 rounded-lg flex items-center gap-3 shadow-xl z-[100] animate-fade-in';
+            toast.innerHTML = `
+                <span class="material-symbols-outlined text-primary">check_circle</span>
+                <span class="font-body-md text-on-surface">Registration confirmed. Check your email.</span>
+            `;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => toast.remove(), 4000);
+        }, 1000);
+    });
+</script>
+</body></html>
