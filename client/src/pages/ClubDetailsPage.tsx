@@ -44,60 +44,76 @@ const ClubDetailsPage = () => {
 
   return (
     <main className="max-w-container-max mx-auto px-6 lg:px-margin-desktop py-8">
-      {error && <div className="message error">{error}</div>}
+      {error && <div className="message error mb-6">{error}</div>}
 
-      <div className="relative w-full rounded-xl overflow-hidden shadow-md mb-8 border border-outline-variant">
-        <div className="w-full h-64 bg-cover bg-center" style={{ backgroundImage: `url('https://lh3.googleusercontent.com/aida-public/AB6AXuBO7fqaUYFSnmpSD_9zkg4hIcNX-z5Tw5fp0_3F5_Tvz0bJFMtvZ3nwKTDUv68FPaRgcxrSTP0Hn39WiqDr2ji5EE-A6CYIn1anUHKJDw5IgeMdSAIVxmb69_4hUeKcaRHLWa0xZ8wQump51xLcfw-kAo4Y5gbOAUZYynPPfyCcmtlTC153f_IUS_B-_4aB_YzNUOEEfWTNOvL_qcfsRdjpxwNjYZ_YWzitb5NlexuRPUqZcOlNiutWTEUcrDa4YOc0qGrI3oLRcH8')` }} />
-        <div className="p-6 bg-surface-container-low">
-          <div className="flex items-start gap-6">
-            <div className="w-24 h-24 rounded-lg overflow-hidden bg-surface">
-              <div className="w-full h-full bg-surface-dim flex items-center justify-center">{club.name?.charAt(0)}</div>
+      <section className="relative overflow-hidden rounded-[1.5rem] shadow-sm border border-outline-variant mb-8 bg-surface">
+        <div className="relative h-72 bg-cover bg-center" style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuBO7fqaUYFSnmpSD_9zkg4hIcNX-z5Tw5fp0_3F5_Tvz0bJFMtvZ3nwKTDUv68FPaRgcxrSTP0Hn39WiqDr2ji5EE-A6CYIn1anUHKJDw5IgeMdSAIVxmb69_4hUeKcaRHLWa0xZ8wQump51xLcfw-kAo4Y5gbOAUZYynPPfyCcmtlTC153f_IUS_B-_4aB_YzNUOEEfWTNOvL_qcfsRdjpxwNjYZ_YWzitb5NlexuRPUqZcOlNiutWTEUcrDa4YOc0qGrI3oLRcH8')" }}>
+          <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent" />
+        </div>
+        <div className="relative p-8 lg:p-10">
+          <div className="flex flex-col lg:flex-row items-start gap-6">
+            <div className="w-24 h-24 rounded-3xl bg-surface-dim flex items-center justify-center text-headline-md text-primary">
+              {club.name?.charAt(0)}
             </div>
             <div className="flex-1">
-              <h1 className="text-headline-md mb-1">{club.name}</h1>
-              <p className="text-on-surface-variant mb-3">{club.description}</p>
-              <div className="flex items-center gap-4">
-                <span className="text-on-surface-variant">{club.members?.length || 0} members</span>
-                <span className="text-on-surface-variant">{club.visibility}</span>
-                <button className="ml-auto bg-primary text-on-primary px-4 py-2 rounded-lg font-semibold">Join Club</button>
-              </div>
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary-container text-on-secondary-container text-caption uppercase tracking-[0.2em] font-semibold mb-3">
+                {club.category}
+              </span>
+              <h1 className="font-display-lg-mobile md:text-display-lg text-on-background mb-3">{club.name}</h1>
+              <p className="text-body-lg text-on-surface-variant max-w-2xl">{club.description}</p>
             </div>
+            <button className="rounded-full bg-primary text-on-primary px-6 py-3 font-semibold text-sm hover:bg-primary/90 transition-colors">
+              Join Club
+            </button>
           </div>
         </div>
-      </div>
+      </section>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
         <div className="lg:col-span-2 space-y-6">
-          <section className="bg-surface p-6 rounded-xl border border-outline-variant">
-            <h3 className="font-headline-sm mb-4">About</h3>
-            <p className="text-on-surface-variant leading-relaxed">{club.description}</p>
+          <section className="glass-card rounded-[1.5rem] border border-outline-variant bg-surface p-8 shadow-sm">
+            <h3 className="font-headline-sm text-[24px] mb-4">About</h3>
+            <p className="text-body-md text-on-surface-variant leading-relaxed">{club.description}</p>
           </section>
 
-          <section className="bg-surface p-6 rounded-xl border border-outline-variant">
-            <h3 className="font-headline-sm mb-4">Upcoming Activities</h3>
-            <p className="text-on-surface-variant">No upcoming activities found.</p>
+          <section className="glass-card rounded-[1.5rem] border border-outline-variant bg-surface p-8 shadow-sm">
+            <h3 className="font-headline-sm text-[24px] mb-4">Upcoming Activities</h3>
+            <p className="text-body-md text-on-surface-variant">No upcoming activities found.</p>
           </section>
         </div>
 
         <aside className="space-y-6">
-          <div className="bg-surface p-6 rounded-xl border border-outline-variant">
-            <h4 className="font-headline-sm mb-2">Club Details</h4>
+          <div className="glass-card rounded-[1.5rem] border border-outline-variant bg-surface p-6 shadow-sm">
+            <h4 className="font-headline-sm mb-4">Club details</h4>
             <div className="space-y-3 text-on-surface-variant">
-              <div><strong>Category:</strong> {club.category}</div>
-              <div><strong>Visibility:</strong> {club.visibility}</div>
-              <div><strong>Members:</strong> {club.members?.length || 0}</div>
+              <div className="flex items-center justify-between gap-3">
+                <span className="font-semibold text-on-surface">Category</span>
+                <span>{club.category}</span>
+              </div>
+              <div className="flex items-center justify-between gap-3">
+                <span className="font-semibold text-on-surface">Visibility</span>
+                <span>{club.visibility}</span>
+              </div>
+              <div className="flex items-center justify-between gap-3">
+                <span className="font-semibold text-on-surface">Members</span>
+                <span>{club.members?.length || 0}</span>
+              </div>
             </div>
           </div>
 
-          <div className="bg-surface p-6 rounded-xl border border-outline-variant">
-            <h4 className="font-headline-sm mb-2">Leadership</h4>
-            <p className="text-on-surface-variant">Club officers not listed.</p>
+          <div className="glass-card rounded-[1.5rem] border border-outline-variant bg-surface p-6 shadow-sm">
+            <h4 className="font-headline-sm mb-4">Leadership</h4>
+            <p className="text-body-md text-on-surface-variant">Club officers not listed.</p>
           </div>
         </aside>
       </div>
 
-      <div className="mt-6">
-        <button type="button" className="button button-link" onClick={() => navigate('/clubs')}>
+      <div className="mt-8">
+        <button
+          type="button"
+          className="rounded-full border border-outline px-6 py-3 text-sm font-semibold text-primary hover:bg-surface-container transition-colors"
+          onClick={() => navigate('/clubs')}
+        >
           Back to club listing
         </button>
       </div>
