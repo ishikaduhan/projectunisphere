@@ -16,6 +16,7 @@
     "node-cron": "^4.6.0"
   },
   "devDependencies": {
+    "@types/node": "^26.1.1",
     "@types/node-cron": "^3.0.11"
   }
 }
