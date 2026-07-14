@@ -8,53 +8,35 @@ interface EventCardProps {
 
 const EventCard = ({ event, isRegistered, onRegister }: EventCardProps) => {
   return (
-    <article className="card" style={{ display: 'grid', gap: '16px' }}>
-      <div style={{ position: 'relative', borderRadius: '20px', overflow: 'hidden', minHeight: '220px' }}>
+    <article className="glass-card rounded-[2rem] overflow-hidden border border-outline-variant shadow-sm transition-transform duration-300 hover:-translate-y-1">
+      <div className="relative h-72 overflow-hidden">
         <img
           src={event.imageUrl}
           alt={event.title}
-          style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+          className="w-full h-full object-cover transition duration-700 hover:scale-105 grayscale-[20%]"
         />
-        <span
-          style={{
-            position: 'absolute',
-            top: '14px',
-            left: '14px',
-            background: 'rgba(255,255,255,0.88)',
-            color: '#111',
-            padding: '6px 12px',
-            borderRadius: '999px',
-            fontSize: '12px',
-            fontWeight: 700,
-            letterSpacing: '0.04em',
-            textTransform: 'uppercase',
-          }}
-        >
+        <span className="absolute top-4 left-4 bg-surface-container text-on-surface text-caption uppercase tracking-[0.2em] font-bold px-3 py-1 rounded-full shadow-sm">
           {event.category}
         </span>
       </div>
 
-      <div style={{ display: 'grid', gap: '12px' }}>
-        <div>
-          <p style={{ margin: 0, color: 'var(--accent)', fontSize: '0.95rem', fontWeight: 700, letterSpacing: '0.06em' }}>{event.date}</p>
-          <h3 style={{ margin: '8px 0 0', fontSize: '1.25rem' }}>{event.title}</h3>
-          <p style={{ margin: '8px 0 0', color: 'var(--text)' }}>{event.summary}</p>
+      <div className="p-6 space-y-4">
+        <div className="space-y-2">
+          <p className="font-label-md uppercase tracking-[0.14em] text-secondary">{event.date}</p>
+          <h3 className="font-headline-sm text-[20px] text-on-background">{event.title}</h3>
+          <p className="text-body-md text-on-surface-variant leading-relaxed">{event.summary}</p>
         </div>
 
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'center', justifyContent: 'space-between' }}>
-          <p style={{ margin: 0, color: 'var(--text-h)', fontWeight: 600 }}>{event.location}</p>
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <p className="text-body-md font-semibold text-on-surface">{event.location}</p>
           <button
             type="button"
             onClick={() => onRegister(event.id)}
-            style={{
-              border: 'none',
-              borderRadius: '999px',
-              padding: '12px 18px',
-              fontWeight: 700,
-              cursor: 'pointer',
-              background: isRegistered ? 'var(--border)' : 'var(--accent)',
-              color: isRegistered ? 'var(--text-h)' : '#fff',
-            }}
+            className={`rounded-full px-5 py-3 text-sm font-semibold transition ${
+              isRegistered
+                ? 'bg-surface-container-high border border-outline text-on-surface'
+                : 'bg-primary text-on-primary hover:bg-primary/90'
+            }`}
           >
             {isRegistered ? 'Registered' : 'Register'}
           </button>
